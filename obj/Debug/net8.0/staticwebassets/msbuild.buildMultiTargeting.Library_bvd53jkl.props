@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Library_bvd53jkl.props" />
+</Project>
