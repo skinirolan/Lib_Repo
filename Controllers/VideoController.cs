@@ -8,9 +8,9 @@ namespace Library_bvd53jkl.Controllers
     [Route("[controller]")]
     public class VideoController:ControllerBase { 
         public VideoService _videoService;
-        VideoController()
+        public VideoController(VideoService videoservice)
         {
-            _videoService = new VideoService();
+            _videoService = videoservice;
         }
 
         [HttpGet]
