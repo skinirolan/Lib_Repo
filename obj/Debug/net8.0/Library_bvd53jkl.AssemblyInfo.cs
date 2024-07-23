@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Library_bvd53jkl")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+680be907143e33d9558990144dd98a7b650d348c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("Library_bvd53jkl")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Library_bvd53jkl")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -6,7 +6,7 @@ namespace Library_bvd53jkl.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    class VideoController:ControllerBase { 
+    public class VideoController:ControllerBase { 
         public VideoService _videoService;
         VideoController()
         {
