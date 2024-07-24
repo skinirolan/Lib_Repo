@@ -1,17 +1,36 @@
-﻿namespace Library_bvd53jkl.models
+﻿namespace Library_bvd53jkl.Models
 {
     public class Video
     {
-        public Video(int id,string name, string description, int duration) //конструктор некого видоса
+        /// <summary>
+        /// Конструктор модели
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="description"></param>
+        /// <param name="duration"></param>
+        public Video(int id,string name, string description, int duration) 
         {
             Id = id;
             Name=name; 
             Description=description;
             Duration = duration;
         }
-        public int Id {  get; set; }
+        /// <summary>
+        /// уникальный идентификатор
+        /// </summary>
+        public int Id { get; set; }
+        /// <summary>
+        /// Имя видеоролика
+        /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// Описание видеоролика
+        /// </summary>
         public string Description { get; set; }
-        public int Duration {  get; set; }
+        /// <summary>
+        /// Длительность видеоролика в милисекундах
+        /// </summary>
+        public int Duration { get; set; }
     }
 }
