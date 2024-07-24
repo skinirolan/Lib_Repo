@@ -16,21 +16,38 @@
             Description=description;
             Duration = duration;
         }
+
         /// <summary>
         /// уникальный идентификатор
         /// </summary>
+        
         public int Id { get; set; }
         /// <summary>
         /// Имя видеоролика
         /// </summary>
+        /// 
+       
         public string Name { get; set; }
         /// <summary>
         /// Описание видеоролика
         /// </summary>
+        
         public string Description { get; set; }
+
         /// <summary>
         /// Длительность видеоролика в милисекундах
         /// </summary>
         public int Duration { get; set; }
+
+        /// <summary>
+        /// Метод "обнуления" ролика
+        /// </summary>
+        public void NullVideo()
+        {
+            this.Name=String.Empty;
+            this.Description=String.Empty;
+            this.Duration = 0;
+            this.Id = 0;
+        }
     }
 }
