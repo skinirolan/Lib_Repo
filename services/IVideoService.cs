@@ -8,5 +8,6 @@ namespace Library_bvd53jkl.services
         void delete(int id);
         void update(Video video);
         Video get(int id);
+        void clear();
     }
 }

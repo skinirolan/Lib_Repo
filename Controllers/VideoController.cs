@@ -10,6 +10,11 @@ namespace Library_bvd53jkl.Controllers
     [Route("api/video")]
     public class VideoController : ControllerBase {
         public VideoService _videoService;
+
+        /// <summary>
+        /// Конструктор контроллера
+        /// </summary>
+        /// <param name="videoservice"></param>
         public VideoController(VideoService videoservice)
         {
             _videoService = videoservice;
@@ -56,7 +61,25 @@ namespace Library_bvd53jkl.Controllers
         [HttpDelete]
         public ActionResult Delete(int id)
         {
-            _videoService.delete(id);
+            try
+            {
+                _videoService.delete(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Удаление всех данных из списка
+        /// </summary>
+        /// <returns>код результата</returns>
+        [HttpDelete("Null_Data")] 
+        public ActionResult NullList() 
+        { 
+            _videoService.clear();
             return Ok();
         }
 
@@ -66,10 +89,17 @@ namespace Library_bvd53jkl.Controllers
         /// <param name="video"></param>
         /// <returns>Код результата</returns>
         [HttpPut]
-        public ActionResult Put(Video video)
+        public ActionResult Update(Video video)
         {
-            _videoService.update(video);
-            return Ok();
+            try
+            {
+                _videoService.update(video);
+                return Ok();
+            }
+            catch (Exception ex) 
+            { 
+                return BadRequest(ex.Message);
+            }
         }
     
     }

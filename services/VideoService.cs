@@ -60,10 +60,11 @@ namespace Library_bvd53jkl.Services
         public void delete(int id) 
         {
             var vid=get(id);
-            if (vid!=null)
+            if (vid != null)
             {
                 _videos.Remove(vid);
             }
+            else throw new Exception("Video with current id doesn't exist");
         }
 
         /// <summary>
@@ -73,15 +74,22 @@ namespace Library_bvd53jkl.Services
         public void update (Video video)
         {
             var origin=get(video.Id);
-            if (origin!=null)
+            if (origin != null)
             {
                 origin.Name = video.Name;
                 origin.Description = video.Description;
                 origin.Duration = video.Duration;
             }
-
-
-
+            else throw new Exception("Video with current id doesn't exist");
+        }
+        
+        /// <summary>
+        /// Полная очистка списка
+        /// </summary>
+        public void clear()
+        {
+            _videos.Clear();
+            _index = 0;
         }
 
         
