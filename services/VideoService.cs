@@ -1,10 +1,20 @@
 ﻿using Library_bvd53jkl.Models;
-using Library_bvd53jkl.services;
+using Library_bvd53jkl.Services;
 
 namespace Library_bvd53jkl.Services
 {
     public class VideoService:IVideoService
     {
+        /// <summary>
+        /// значение, изходя из которого будет формироваться id отдтедльного ролика
+        /// </summary>
+        private int _index;
+
+        /// <summary>
+        /// Список роликов
+        /// </summary>
+        private List<Video> _videos;
+
         /// <summary>
         /// консткруктор сервиса
         /// </summary>
@@ -15,22 +25,13 @@ namespace Library_bvd53jkl.Services
         }  
         
         /// <summary>
-        /// значение, изходя из которого будет формироваться id отдтедльного ролика
-        /// </summary>
-        private int _index;
-
-        /// <summary>
-        /// Список роликов
-        /// </summary>
-        private List<Video> _videos;
-        
-        /// <summary>
         /// Получение всех роликов
         /// </summary>
         /// <returns>List со всеми имеющимеся видеороликами</returns>
-        public List<Video> GetFullVideoList()
+        public List<Video> getFullVideoList()
         {
-            return _videos;
+            if (_videos.Count!=0) return _videos;
+            else throw new NullReferenceException("The video list is empty");
         }
 
         /// <summary>
@@ -40,7 +41,13 @@ namespace Library_bvd53jkl.Services
         /// <returns>видеоролик с соответствующим id</returns>
         public Video get(int id)
         {
-            return _videos.FirstOrDefault<Video>(vid=>vid.Id==id);
+            var vid = _videos.FirstOrDefault<Video>(vid => vid.Id == id);
+            if (vid != null)
+            {
+                return vid;
+            }
+            else throw new NullReferenceException("Video with current id doesn't exist");
+
         }
         /// <summary>
         /// Добавление ивидеоролика в List
@@ -64,7 +71,7 @@ namespace Library_bvd53jkl.Services
             {
                 _videos.Remove(vid);
             }
-            else throw new Exception("Video with current id doesn't exist");
+            else throw new NullReferenceException("Video with current id doesn't exist");
         }
 
         /// <summary>
@@ -80,7 +87,7 @@ namespace Library_bvd53jkl.Services
                 origin.Description = video.Description;
                 origin.Duration = video.Duration;
             }
-            else throw new Exception("Video with current id doesn't exist");
+            else throw new NullReferenceException("Video with current id doesn't exist");
         }
         
         /// <summary>

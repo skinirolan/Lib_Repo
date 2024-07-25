@@ -9,13 +9,13 @@ namespace Library_bvd53jkl.Controllers
     [ApiController]
     [Route("api/video")]
     public class VideoController : ControllerBase {
-        public VideoService _videoService;
+        public IVideoService _videoService;
 
         /// <summary>
         /// Конструктор контроллера
         /// </summary>
         /// <param name="videoservice"></param>
-        public VideoController(VideoService videoservice)
+        public VideoController(IVideoService videoservice)
         {
             _videoService = videoservice;
         }
@@ -25,9 +25,15 @@ namespace Library_bvd53jkl.Controllers
         /// </summary>
         /// <returns>list со всеми Video</returns>
         [HttpGet]
-        public ActionResult<List<Video>> GetAllVideos()
+        public ActionResult<List<Video>> getAllVideos()
         {
-            return _videoService.GetFullVideoList();
+            try
+            {
+                return _videoService.getFullVideoList();
+            }catch (NullReferenceException ex) 
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         /// <summary>
@@ -36,9 +42,16 @@ namespace Library_bvd53jkl.Controllers
         /// <param name="id"></param>
         /// <returns>Один конкретный Video по выбранному id</returns>
         [HttpGet("{id}")]
-        public ActionResult<Video> GetVideoById(int id)
+        public ActionResult<Video> getVideoById(int id)
         {
-            return _videoService.get(id);
+            try
+            {
+                return _videoService.get(id);
+            }
+            catch (NullReferenceException ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         /// <summary>
@@ -47,7 +60,7 @@ namespace Library_bvd53jkl.Controllers
         /// <param name="video"></param>
         /// <returns>Код результата</returns>
         [HttpPost]
-        public ActionResult<Video> PostVideo(Video video)
+        public ActionResult<Video> postVideo(Video video)
         {
             _videoService.add(video);
             return Created();
@@ -59,16 +72,16 @@ namespace Library_bvd53jkl.Controllers
         /// <param name="id"></param>
         /// <returns>Код результата</returns>
         [HttpDelete]
-        public ActionResult Delete(int id)
+        public ActionResult deleteFromList(int id)
         {
             try
             {
                 _videoService.delete(id);
                 return Ok();
             }
-            catch (Exception ex)
+            catch (NullReferenceException ex)
             {
-                return BadRequest(ex.Message);
+                return NotFound(ex.Message);
             }
         }
 
@@ -77,7 +90,7 @@ namespace Library_bvd53jkl.Controllers
         /// </summary>
         /// <returns>код результата</returns>
         [HttpDelete("Null_Data")] 
-        public ActionResult NullList() 
+        public ActionResult nullList() 
         { 
             _videoService.clear();
             return Ok();
@@ -89,16 +102,16 @@ namespace Library_bvd53jkl.Controllers
         /// <param name="video"></param>
         /// <returns>Код результата</returns>
         [HttpPut]
-        public ActionResult Update(Video video)
+        public ActionResult update(Video video)
         {
             try
             {
                 _videoService.update(video);
                 return Ok();
             }
-            catch (Exception ex) 
+            catch (NullReferenceException ex) 
             { 
-                return BadRequest(ex.Message);
+                return NotFound(ex.Message);
             }
         }
     
