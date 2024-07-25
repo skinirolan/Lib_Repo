@@ -12,8 +12,8 @@
         public Video(int id,string name, string description, int duration) 
         {
             Id = id;
-            Name=name; 
-            Description=description;
+            Name = name; 
+            Description = description;
             Duration = duration;
         }
 
@@ -45,8 +45,8 @@
         /// </summary>
         public void NullVideo()
         {
-            this.Name=String.Empty;
-            this.Description=String.Empty;
+            this.Name = String.Empty;
+            this.Description = String.Empty;
             this.Duration = 0;
             this.Id = 0;
         }

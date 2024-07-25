@@ -30,7 +30,7 @@ namespace Library_bvd53jkl.Services
         /// <returns>List со всеми имеющимеся видеороликами</returns>
         public List<Video> getFullVideoList()
         {
-            if (_videos.Count!=0) return _videos;
+            if (_videos.Count != 0) return _videos;
             else throw new NullReferenceException("The video list is empty");
         }
 
