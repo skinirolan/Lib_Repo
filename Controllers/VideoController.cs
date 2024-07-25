@@ -7,7 +7,7 @@ namespace Library_bvd53jkl.Controllers
 {
 
     [ApiController]
-    [Route("api/video")]
+    [Route("api/videos")]
     public class VideoController : ControllerBase {
         public IVideoService _videoService;
 
@@ -71,7 +71,7 @@ namespace Library_bvd53jkl.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Код результата</returns>
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public ActionResult deleteFromList(int id)
         {
             try
@@ -89,7 +89,7 @@ namespace Library_bvd53jkl.Controllers
         /// Удаление всех данных из списка
         /// </summary>
         /// <returns>код результата</returns>
-        [HttpDelete("Null_Data")] 
+        [HttpDelete()] 
         public ActionResult nullList() 
         { 
             _videoService.clear();
