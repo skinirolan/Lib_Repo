@@ -3,117 +3,147 @@ using Library_bvd53jkl.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualBasic.FileIO;
 
-namespace Library_bvd53jkl.Controllers
-{
+namespace Library_bvd53jkl.Controllers;
 
-    [ApiController]
-    [Route("api/videos")]
-    public class VideoController : ControllerBase {
-        public IVideoService _videoService;
 
-        /// <summary>
-        /// Конструктор контроллера
-        /// </summary>
-        /// <param name="videoservice"></param>
-        public VideoController(IVideoService videoservice)
+[ApiController]
+[Route("api/videos")]
+public class VideoController : ControllerBase {
+    public IVideoService _videoService;
+
+    /// <summary>
+    /// Конструктор контроллера
+    /// </summary>
+    /// <param name="videoservice"></param>
+    public VideoController(IVideoService videoservice)
+    {
+        _videoService = videoservice;
+    }
+
+    /// <summary>
+    /// Позволяет получить все сохраненные ролики
+    /// </summary>
+    /// <returns>list со всеми Video</returns>
+    [HttpGet]
+    public ActionResult<List<Video>> GetAllVideos()
+    {
+        try
         {
-            _videoService = videoservice;
+            return _videoService.GetFullVideoList();
         }
-
-        /// <summary>
-        /// Позволяет получить все сохраненные ролики
-        /// </summary>
-        /// <returns>list со всеми Video</returns>
-        [HttpGet]
-        public ActionResult<List<Video>> getAllVideos()
+        catch (NullReferenceException ex) 
         {
-            try
-            {
-                return _videoService.getFullVideoList();
-            }catch (NullReferenceException ex) 
-            {
-                return NotFound(ex.Message);
-            }
+            return NotFound(ex.Message);
         }
-
-        /// <summary>
-        /// Позволяет получить видео по его id
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns>Один конкретный Video по выбранному id</returns>
-        [HttpGet("{id}")]
-        public ActionResult<Video> getVideoById(int id)
+        catch (Exception ex)
         {
-            try
-            {
-                return _videoService.get(id);
-            }
-            catch (NullReferenceException ex)
-            {
-                return NotFound(ex.Message);
-            }
+            return StatusCode(500);
         }
+    }
 
-        /// <summary>
-        /// Позволяет добавить ролик в память
-        /// </summary>
-        /// <param name="video"></param>
-        /// <returns>Код результата</returns>
-        [HttpPost]
-        public ActionResult<Video> postVideo(Video video)
+    /// <summary>
+    /// Позволяет получить видео по его id
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns>Один конкретный Video по выбранному id</returns>
+    [HttpGet("{id}")]
+    public ActionResult<Video> GetVideoById(int id)
+    {
+        try
         {
-            _videoService.add(video);
+            return _videoService.Get(id);
+        }
+        catch (NullReferenceException ex)
+        {
+            return NotFound(ex.Message);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500);
+        }
+    }
+
+    /// <summary>
+    /// Позволяет добавить ролик в память
+    /// </summary>
+    /// <param name="video"></param>
+    /// <returns>Код результата</returns>
+    [HttpPost]
+    public ActionResult<Video> postVideo(Video video)
+    {
+        try
+        {
+            _videoService.Add(video);
             return Created();
         }
-
-        /// <summary>
-        /// позволяет удалить ролик из памяти
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns>Код результата</returns>
-        [HttpDelete("{id}")]
-        public ActionResult deleteFromList(int id)
+        catch (Exception ex)
         {
-            try
-            {
-                _videoService.delete(id);
-                return Ok();
-            }
-            catch (NullReferenceException ex)
-            {
-                return NotFound(ex.Message);
-            }
+            return StatusCode(500);
         }
+    }
 
-        /// <summary>
-        /// Удаление всех данных из списка
-        /// </summary>
-        /// <returns>код результата</returns>
-        [HttpDelete()] 
-        public ActionResult nullList() 
-        { 
-            _videoService.clear();
+    /// <summary>
+    /// позволяет удалить ролик из памяти
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns>Код результата</returns>
+    [HttpDelete("{id}")]
+    public ActionResult DeleteFromList(int id)
+    {
+        try
+        {
+            _videoService.Delete(id);
             return Ok();
         }
-
-        /// <summary>
-        /// Позволяет обновить информацию о ролике. Меняется тот ролик, id которого был указан в запросе. Непосредсвтенно id поменять нельзя
-        /// </summary>
-        /// <param name="video"></param>
-        /// <returns>Код результата</returns>
-        [HttpPut]
-        public ActionResult update(Video video)
+        catch (NullReferenceException ex)
         {
-            try
-            {
-                _videoService.update(video);
-                return Ok();
-            }
-            catch (NullReferenceException ex) 
-            { 
-                return NotFound(ex.Message);
-            }
+            return NotFound(ex.Message);
         }
-    
+        catch (Exception ex)
+        {
+            return StatusCode(500);
+        }
     }
+
+    /// <summary>
+    /// Удаление всех данных из списка
+    /// </summary>
+    /// <returns>код результата</returns>
+    [HttpDelete()] 
+    public ActionResult NullList()
+    {
+        try
+        {
+            _videoService.Clear();
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500);
+        }
+    }
+
+    /// <summary>
+    /// Позволяет обновить информацию о ролике. Меняется тот ролик, id которого был указан в запросе. Непосредсвтенно id поменять нельзя
+    /// </summary>
+    /// <param name="video"></param>
+    /// <returns>Код результата</returns>
+    [HttpPut]
+    public ActionResult Update(Video video)
+    {
+        try
+        {
+            _videoService.Update(video);
+            return Ok();
+        }
+        catch (NullReferenceException ex) 
+        { 
+            return NotFound(ex.Message);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500);
+        }
+    }
+
 }

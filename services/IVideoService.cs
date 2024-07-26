@@ -1,14 +1,43 @@
 ﻿using Library_bvd53jkl.Models;
 
-namespace Library_bvd53jkl.Services
+namespace Library_bvd53jkl.Services;
+
+public interface IVideoService
 {
-    public interface IVideoService
-    {
-        List<Video>getFullVideoList();
-        void add(Video video);
-        void delete(int id);
-        void update(Video video);
-        Video get(int id);
-        void clear();
-    }
+
+    /// <summary>
+    /// Получение всех роликов
+    /// </summary>
+    /// <returns>List со всеми имеющимеся видеороликами</returns>
+    List<Video> GetFullVideoList();
+
+    /// <summary>
+    /// Добавление ивидеоролика в List
+    /// </summary>
+    /// <param name="video"></param>
+    void Add(Video video);
+
+    /// <summary>
+    /// Удаление ролика из листа
+    /// </summary>
+    /// <param name="id"></param>
+    void Delete(int id);
+
+    /// <summary>
+    /// Изменение информации о ролике
+    /// </summary>
+    /// <param name="video"></param>
+    void Update(Video video);
+
+    /// <summary>
+    /// Получение ролика по id
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns>видеоролик с соответствующим id</returns>
+    Video Get(int id);
+
+    /// <summary>
+    /// Полная очистка списка
+    /// </summary>
+    void Clear();
 }
