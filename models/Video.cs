@@ -5,10 +5,10 @@ public class Video
     /// <summary>
     /// Конструктор модели
     /// </summary>
-    /// <param name="id"></param>
-    /// <param name="name"></param>
-    /// <param name="description"></param>
-    /// <param name="duration"></param>
+    /// <param name="id">Уникальный номер</param>
+    /// <param name="name">Имя</param>
+    /// <param name="description">Описание</param>
+    /// <param name="duration">Длительность в милисекундах</param>
     public Video(int id,string name, string description, int duration) 
     {
         Id = id;
