@@ -69,14 +69,14 @@ public class VideoController : ControllerBase {
     /// <summary>
     /// Позволяет добавить ролик в память
     /// </summary>
-    /// <param name="videoiput"></param>
+    /// <param name="videoinput"></param>
     /// <returns>id созданного видео</returns>
     [HttpPost]
-    public IResult PostVideo(VideoInput videoiput)
+    public IResult AddVideo(VideoInput videoinput)
     {
         try
         {
-            return TypedResults.Ok(_videoService.Add(new Video(videoiput.Name, videoiput.Description, videoiput.Duration)));
+            return TypedResults.Ok(_videoService.Add(new Video(videoinput.Name, videoinput.Description, videoinput.Duration)));
         }
         catch (Exception ex)
         {

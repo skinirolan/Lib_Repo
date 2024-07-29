@@ -58,8 +58,7 @@ public class VideoService:IVideoService
     //<inheritdoc/> 
     public int Add(Video video)
     {
-        _idformer++;
-        video.Id = _idformer;
+        video.Id = ++_idformer;
         _videos.Add(video);
         return video.Id;
     }
