@@ -74,7 +74,7 @@ public class VideoController : ControllerBase {
     {
         try
         {
-            _videoService.Add(new Video(videoiput.name,videoiput.description,videoiput.durationn));
+            _videoService.Add(new Video(videoiput.Name,videoiput.Description,videoiput.Duration));
             return Created();
         }
         catch (Exception ex)

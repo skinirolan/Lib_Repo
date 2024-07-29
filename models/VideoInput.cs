@@ -5,15 +5,15 @@ public class VideoInput
     /// <summary>
     /// имя ролика
     /// </summary>
-    public string name { get; set; }
+    public string Name { get; set; }
 
     /// <summary>
     /// описание ролика
     /// </summary>
-    public string description { get; set; }
+    public string Description { get; set; }
 
     /// <summary>
     /// длительность ролика
     /// </summary>
-    public int durationn { get; set; }
+    public int Duration { get; set; }
 }
