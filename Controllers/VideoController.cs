@@ -69,10 +69,11 @@ public class VideoController : ControllerBase {
     /// <param name="video"></param>
     /// <returns>Код результата</returns>
     [HttpPost]
-    public ActionResult<Video> postVideo(Video video)
+    public ActionResult postVideo(string name, string description, int duration)
     {
         try
         {
+            Video video = new Video(0,name,description,duration);
             _videoService.Add(video);
             return Created();
         }

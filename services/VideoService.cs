@@ -8,7 +8,7 @@ public class VideoService:IVideoService
     /// <summary>
     /// значение, изходя из которого будет формироваться id отдтедльного ролика
     /// </summary>
-    private int _index;
+    private int _idformer;
 
     /// <summary>
     /// Список роликов
@@ -20,7 +20,7 @@ public class VideoService:IVideoService
     /// </summary>
     public VideoService() 
     {
-        _index = 0;
+        _idformer = 0;
         _videos = new List<Video>();
     }
 
@@ -42,18 +42,19 @@ public class VideoService:IVideoService
         else throw new NullReferenceException("Video with current id doesn't exist");
 
     }
+
     //<inheritdoc/> 
     public void Add(Video video)
     {
-        _index++;
-        video.Id = _index;
+        _idformer++;
+        video.Id = _idformer;
         _videos.Add(video);
     }
 
     //<inheritdoc/> 
     public void Delete(int id) 
     {
-        var vid=Get(id);
+        var vid = Get(id);
         if (vid != null)
         {
             _videos.Remove(vid);
@@ -78,7 +79,7 @@ public class VideoService:IVideoService
     public void Clear()
     {
         _videos.Clear();
-        _index = 0;
+        _idformer = 0;
     }
 
     
