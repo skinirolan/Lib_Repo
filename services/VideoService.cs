@@ -10,6 +10,10 @@ public class VideoService:IVideoService
     /// </summary>
     private int _idformer;
 
+
+    private readonly ILogger<VideoService> _logger;
+
+
     /// <summary>
     /// Список роликов
     /// </summary>
@@ -18,9 +22,10 @@ public class VideoService:IVideoService
     /// <summary>
     /// консткруктор сервиса
     /// </summary>
-    public VideoService() 
+    public VideoService(ILogger<VideoService> logger) 
     {
         _idformer = 0;
+        _logger = logger;
         _videos = new List<Video>();
     }
 
@@ -28,7 +33,11 @@ public class VideoService:IVideoService
     public List<Video> GetFullVideoList()
     {
         if (_videos.Count != 0) return _videos;
-        else throw new NullReferenceException("The video list is empty");
+        else 
+        { 
+            _logger.LogError("The video list is empty");
+            throw new NullReferenceException("The video list is empty");
+        }
     }
 
     //<inheritdoc/> 
@@ -39,8 +48,11 @@ public class VideoService:IVideoService
         {
             return vid;
         }
-        else throw new NullReferenceException("Video with current id doesn't exist");
-
+        else
+        {
+            _logger.LogError("Video with current id doesn't exist");
+            throw new NullReferenceException("Video with current id doesn't exist");
+        }
     }
 
     //<inheritdoc/> 
@@ -59,7 +71,11 @@ public class VideoService:IVideoService
         {
             _videos.Remove(vid);
         }
-        else throw new NullReferenceException("Video with current id doesn't exist");
+        else
+        {
+            _logger.LogError("The video list is empty");
+            throw new NullReferenceException("Video with current id doesn't exist");
+        }
     }
 
     //<inheritdoc/> 
@@ -72,7 +88,11 @@ public class VideoService:IVideoService
             origin.Description = video.Description;
             origin.Duration = video.Duration;
         }
-        else throw new NullReferenceException("Video with current id doesn't exist");
+        else
+        {
+            _logger.LogError("The video list is empty");
+            throw new NullReferenceException("Video with current id doesn't exist");
+        }
     }
 
     //<inheritdoc/> 
