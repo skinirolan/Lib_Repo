@@ -3,7 +3,7 @@
 public class Video
 {
     /// <summary>
-    /// Конструктор модели
+    /// Конструктор модели, в котором требуется также ввести id. Оставлен для тестов.
     /// </summary>
     /// <param name="id">Уникальный номер</param>
     /// <param name="name">Имя</param>
@@ -18,7 +18,21 @@ public class Video
     }
 
     /// <summary>
-    /// уникальный идентификатор
+    /// Конструктор модели
+    /// </summary>
+    /// <param name="name">Имя</param>
+    /// <param name="description">Описание</param>
+    /// <param name="duration">Длительность</param>
+    public Video(string name, string description, int duration)
+    {
+        Id = 0;
+        Name = name;
+        Description = description;
+        Duration = duration;
+    }
+
+    /// <summary>
+    /// уникальный идентификатор. Задается с помощью VideoService. 
     /// </summary>
     public int Id { get; set; }
 

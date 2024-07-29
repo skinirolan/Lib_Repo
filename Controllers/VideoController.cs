@@ -1,4 +1,5 @@
-﻿using Library_bvd53jkl.Models;
+﻿using Library_bvd53jkl.models;
+using Library_bvd53jkl.Models;
 using Library_bvd53jkl.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualBasic.FileIO;
@@ -66,15 +67,14 @@ public class VideoController : ControllerBase {
     /// <summary>
     /// Позволяет добавить ролик в память
     /// </summary>
-    /// <param name="video"></param>
+    /// <param name="videoiput"></param>
     /// <returns>Код результата</returns>
     [HttpPost]
-    public ActionResult postVideo(string name, string description, int duration)
+    public ActionResult postVideo(VideoInput videoiput)
     {
         try
         {
-            Video video = new Video(0,name,description,duration);
-            _videoService.Add(video);
+            _videoService.Add(new Video(videoiput.name,videoiput.description,videoiput.durationn));
             return Created();
         }
         catch (Exception ex)
