@@ -12,10 +12,11 @@ public interface IVideoService
     List<Video> GetFullVideoList();
 
     /// <summary>
-    /// Добавление ивидеоролика в List
+    /// Добавление ролика в список
     /// </summary>
-    /// <param name="video"></param>
-    void Add(Video video);
+    /// <param name="video">видеоролик</param>
+    /// <returns>id добавленного видеоролика</returns>
+    int Add(Video video);
 
     /// <summary>
     /// Удаление ролика из листа

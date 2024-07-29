@@ -26,7 +26,7 @@ public class VideoService:IVideoService
     {
         _idformer = 0;
         _logger = logger;
-        _videos = new List<Video>();
+        _videos = [];
     }
 
     //<inheritdoc/> 
@@ -43,10 +43,10 @@ public class VideoService:IVideoService
     //<inheritdoc/> 
     public Video Get(int id)
     {
-        var vid = _videos.FirstOrDefault<Video>(vid => vid.Id == id);
-        if (vid != null)
+        var video = _videos.FirstOrDefault<Video>(video => video.Id == id);
+        if (video != null)
         {
-            return vid;
+            return video;
         }
         else
         {
@@ -56,11 +56,12 @@ public class VideoService:IVideoService
     }
 
     //<inheritdoc/> 
-    public void Add(Video video)
+    public int Add(Video video)
     {
         _idformer++;
         video.Id = _idformer;
         _videos.Add(video);
+        return video.Id;
     }
 
     //<inheritdoc/> 
