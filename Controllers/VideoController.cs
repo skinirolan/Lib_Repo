@@ -26,19 +26,20 @@ public class VideoController : ControllerBase {
     /// </summary>
     /// <returns>list со всеми Video</returns>
     [HttpGet]
-    public ActionResult<List<Video>> GetAllVideos()
+    public IResult GetAllVideos()
     {
         try
         {
-            return _videoService.GetFullVideoList();
+            return TypedResults.Ok(_videoService.GetFullVideoList());
         }
         catch (NullReferenceException ex) 
         {
-            return NotFound(ex.Message);
+            return TypedResults.NotFound("Сущность не найдена");
         }
         catch (Exception ex)
         {
-            return StatusCode(500);
+            return TypedResults.Json("Произошла неизвестная ошибка",
+                statusCode: StatusCodes.Status500InternalServerError);
         }
     }
 
@@ -48,19 +49,20 @@ public class VideoController : ControllerBase {
     /// <param name="id"></param>
     /// <returns>Один конкретный Video по выбранному id</returns>
     [HttpGet("{id}")]
-    public ActionResult<Video> GetVideoById(int id)
+    public IResult GetVideoById(int id)
     {
         try
         {
-            return _videoService.Get(id);
+            return TypedResults.Ok(_videoService.Get(id));
         }
         catch (NullReferenceException ex)
         {
-            return NotFound(ex.Message);
+            return TypedResults.NotFound("Сущность не найдена");
         }
         catch (Exception ex)
         {
-            return StatusCode(500);
+            return TypedResults.Json("Произошла неизвестная ошибка",
+                statusCode: StatusCodes.Status500InternalServerError);
         }
     }
 
@@ -70,16 +72,17 @@ public class VideoController : ControllerBase {
     /// <param name="videoiput"></param>
     /// <returns>Код результата</returns>
     [HttpPost]
-    public ActionResult postVideo(VideoInput videoiput)
+    public IResult PostVideo(VideoInput videoiput)
     {
         try
         {
             _videoService.Add(new Video(videoiput.Name,videoiput.Description,videoiput.Duration));
-            return Created();
+            return TypedResults.Ok("Объект создан");
         }
         catch (Exception ex)
         {
-            return StatusCode(500);
+            return TypedResults.Json("Произошла неизвестная ошибка",
+                statusCode: StatusCodes.Status500InternalServerError);
         }
     }
 
@@ -89,20 +92,21 @@ public class VideoController : ControllerBase {
     /// <param name="id"></param>
     /// <returns>Код результата</returns>
     [HttpDelete("{id}")]
-    public ActionResult DeleteFromList(int id)
+    public IResult DeleteFromList(int id)
     {
         try
         {
             _videoService.Delete(id);
-            return Ok();
+            return TypedResults.Ok();
         }
         catch (NullReferenceException ex)
         {
-            return NotFound(ex.Message);
+            return TypedResults.NotFound("Сущность не найдена");
         }
         catch (Exception ex)
         {
-            return StatusCode(500);
+            return TypedResults.Json("Произошла неизвестная ошибка",
+                statusCode: StatusCodes.Status500InternalServerError);
         }
     }
 
@@ -111,16 +115,17 @@ public class VideoController : ControllerBase {
     /// </summary>
     /// <returns>код результата</returns>
     [HttpDelete()] 
-    public ActionResult NullList()
+    public IResult NullList()
     {
         try
         {
             _videoService.Clear();
-            return Ok();
+            return TypedResults.Ok();
         }
         catch (Exception ex)
         {
-            return StatusCode(500);
+            return TypedResults.Json("Произошла неизвестная ошибка",
+               statusCode: StatusCodes.Status500InternalServerError);
         }
     }
 
@@ -130,20 +135,21 @@ public class VideoController : ControllerBase {
     /// <param name="video"></param>
     /// <returns>Код результата</returns>
     [HttpPut]
-    public ActionResult Update(Video video)
+    public IResult Update(Video video)
     {
         try
         {
             _videoService.Update(video);
-            return Ok();
+            return TypedResults.Ok();
         }
-        catch (NullReferenceException ex) 
-        { 
-            return NotFound(ex.Message);
+        catch (NullReferenceException ex)
+        {
+            return TypedResults.NotFound("Сущность не найдена");
         }
         catch (Exception ex)
         {
-            return StatusCode(500);
+            return TypedResults.Json("Произошла неизвестная ошибка",
+                statusCode: StatusCodes.Status500InternalServerError);
         }
     }
 
