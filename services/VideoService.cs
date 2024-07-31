@@ -6,7 +6,7 @@ namespace Library_bvd53jkl.Services;
 public class VideoService:IVideoService
 {
 
-     private readonly ILogger<VideoService> _logger;
+    private readonly ILogger<VideoService> _logger;
 
     /// <summary>
     /// Список роликов

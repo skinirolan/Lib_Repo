@@ -13,7 +13,7 @@ public class Video
         Id = Guid.NewGuid();
         Name = name;
         Description = description;
-        Duration = duration;
+        Duration = TimeSpan.FromSeconds(duration);
     }
 
     /// <summary>
@@ -34,5 +34,5 @@ public class Video
     /// <summary>
     /// Длительность видеоролика в милисекундах
     /// </summary>
-    public int Duration { get; set; }
+    public TimeSpan Duration { get; set; }
 }
