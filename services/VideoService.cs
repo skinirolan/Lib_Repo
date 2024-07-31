@@ -5,14 +5,8 @@ namespace Library_bvd53jkl.Services;
 
 public class VideoService:IVideoService
 {
-    /// <summary>
-    /// значение, изходя из которого будет формироваться id отдтедльного ролика
-    /// </summary>
-    private int _idformer;
 
-
-    private readonly ILogger<VideoService> _logger;
-
+     private readonly ILogger<VideoService> _logger;
 
     /// <summary>
     /// Список роликов
@@ -24,7 +18,6 @@ public class VideoService:IVideoService
     /// </summary>
     public VideoService(ILogger<VideoService> logger) 
     {
-        _idformer = 0;
         _logger = logger;
         _videos = [];
     }
@@ -41,7 +34,7 @@ public class VideoService:IVideoService
     }
 
     //<inheritdoc/> 
-    public Video Get(int id)
+    public Video Get(Guid id)
     {
         var video = _videos.FirstOrDefault<Video>(video => video.Id == id);
         if (video != null)
@@ -56,20 +49,19 @@ public class VideoService:IVideoService
     }
 
     //<inheritdoc/> 
-    public int Add(Video video)
+    public Guid Add(Video video)
     {
-        video.Id = ++_idformer;
         _videos.Add(video);
         return video.Id;
     }
 
     //<inheritdoc/> 
-    public void Delete(int id) 
+    public void Delete(Guid id) 
     {
-        var vid = Get(id);
-        if (vid != null)
+        var video = Get(id);
+        if (video != null)
         {
-            _videos.Remove(vid);
+            _videos.Remove(video);
         }
         else
         {
@@ -99,7 +91,6 @@ public class VideoService:IVideoService
     public void Clear()
     {
         _videos.Clear();
-        _idformer = 0;
     }
 
     

@@ -16,13 +16,13 @@ public interface IVideoService
     /// </summary>
     /// <param name="video">видеоролик</param>
     /// <returns>id добавленного видеоролика</returns>
-    int Add(Video video);
+    Guid Add(Video video);
 
     /// <summary>
     /// Удаление ролика из листа
     /// </summary>
     /// <param name="id"></param>
-    void Delete(int id);
+    void Delete(Guid id);
 
     /// <summary>
     /// Изменение информации о ролике
@@ -35,7 +35,7 @@ public interface IVideoService
     /// </summary>
     /// <param name="id"></param>
     /// <returns>видеоролик с соответствующим id</returns>
-    Video Get(int id);
+    Video Get(Guid id);
 
     /// <summary>
     /// Полная очистка списка

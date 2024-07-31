@@ -49,7 +49,7 @@ public class VideoController : ControllerBase {
     /// <param name="id"></param>
     /// <returns>Один конкретный Video по выбранному id</returns>
     [HttpGet("{id}")]
-    public IResult GetVideoById(int id)
+    public IResult GetVideoById(Guid id)
     {
         try
         {
@@ -76,6 +76,7 @@ public class VideoController : ControllerBase {
     {
         try
         {
+            TimeSpan a;
             return TypedResults.Ok(_videoService.Add(new Video(videoinput.Name, videoinput.Description, videoinput.Duration)));
         }
         catch (Exception ex)
@@ -91,7 +92,7 @@ public class VideoController : ControllerBase {
     /// <param name="id"></param>
     /// <returns>Код результата</returns>
     [HttpDelete("{id}")]
-    public IResult DeleteFromList(int id)
+    public IResult DeleteFromList(Guid id)
     {
         try
         {
