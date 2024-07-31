@@ -1,6 +1,6 @@
 ﻿namespace Library_bvd53jkl.models;
 
-public record class VideoInput
+public record VideoInput
 {
     /// <summary>
     /// имя ролика
