@@ -7,13 +7,13 @@ public class Video
     /// </summary>
     /// <param name="name">Имя</param>
     /// <param name="description">Описание</param>
-    /// <param name="duration">Длительность</param>
-    public Video(string name, string description, int duration)
+    /// <param name="duration">Длительность ролика</param>
+    public Video(string name, string description, TimeSpan duration)
     {
         Id = Guid.NewGuid();
         Name = name;
         Description = description;
-        Duration = TimeSpan.FromSeconds(duration);
+        Duration = duration;
     }
 
     /// <summary>
@@ -32,7 +32,7 @@ public class Video
     public string Description { get; set; }
 
     /// <summary>
-    /// Длительность видеоролика в милисекундах
+    /// Длительность видеоролика
     /// </summary>
     public TimeSpan Duration { get; set; }
 }

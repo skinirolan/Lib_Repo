@@ -5,7 +5,9 @@ namespace Library_bvd53jkl.Services;
 
 public class VideoService:IVideoService
 {
-
+    /// <summary>
+    /// Логгер
+    /// </summary>
     private readonly ILogger<VideoService> _logger;
 
     /// <summary>
@@ -71,14 +73,14 @@ public class VideoService:IVideoService
     }
 
     //<inheritdoc/> 
-    public void Update (Video video)
+    public void Update (Guid id,VideoInput videoinput)
     {
-        var origin=Get(video.Id);
+        var origin=Get(id);
         if (origin != null)
         {
-            origin.Name = video.Name;
-            origin.Description = video.Description;
-            origin.Duration = video.Duration;
+            origin.Name = videoinput.Name;
+            origin.Description = videoinput.Description;
+            origin.Duration = videoinput.Duration;
         }
         else
         {
@@ -88,11 +90,6 @@ public class VideoService:IVideoService
     }
 
     //<inheritdoc/> 
-    public void Clear()
-    {
-        _videos.Clear();
-    }
-
+    public void Clear()=> _videos.Clear();
     
-
 }

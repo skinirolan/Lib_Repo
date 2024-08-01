@@ -31,3 +31,5 @@ D:\projects\asp\Library_bvd53jkl\obj\Debug\net8.0\refint\Library_bvd53jkl.dll
 D:\projects\asp\Library_bvd53jkl\obj\Debug\net8.0\Library_bvd53jkl.pdb
 D:\projects\asp\Library_bvd53jkl\obj\Debug\net8.0\Library_bvd53jkl.genruntimeconfig.cache
 D:\projects\asp\Library_bvd53jkl\obj\Debug\net8.0\ref\Library_bvd53jkl.dll
+D:\projects\asp\Library_bvd53jkl\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+D:\projects\asp\Library_bvd53jkl\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll

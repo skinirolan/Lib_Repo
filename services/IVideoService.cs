@@ -28,7 +28,7 @@ public interface IVideoService
     /// Изменение информации о ролике
     /// </summary>
     /// <param name="video"></param>
-    void Update(Video video);
+    void Update(Guid id,VideoInput videoinput);
 
     /// <summary>
     /// Получение ролика по id

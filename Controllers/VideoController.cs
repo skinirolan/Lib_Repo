@@ -1,5 +1,4 @@
-﻿using Library_bvd53jkl.models;
-using Library_bvd53jkl.Models;
+﻿using Library_bvd53jkl.Models;
 using Library_bvd53jkl.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualBasic.FileIO;
@@ -15,7 +14,7 @@ public class VideoController : ControllerBase {
     /// <summary>
     /// Конструктор контроллера
     /// </summary>
-    /// <param name="videoservice"></param>
+    /// <param name="videoservice">Видеосервис</param>
     public VideoController(IVideoService videoservice)
     {
         _videoService = videoservice;
@@ -46,7 +45,7 @@ public class VideoController : ControllerBase {
     /// <summary>
     /// Позволяет получить видео по его id
     /// </summary>
-    /// <param name="id"></param>
+    /// <param name="id">Уникальный идентификатор</param>
     /// <returns>Один конкретный Video по выбранному id</returns>
     [HttpGet("{id}")]
     public IResult GetVideoById(Guid id)
@@ -69,14 +68,13 @@ public class VideoController : ControllerBase {
     /// <summary>
     /// Позволяет добавить ролик в память
     /// </summary>
-    /// <param name="videoinput"></param>
+    /// <param name="videoinput">ролик</param>
     /// <returns>id созданного видео</returns>
     [HttpPost]
     public IResult AddVideo(VideoInput videoinput)
     {
         try
         {
-            TimeSpan a;
             return TypedResults.Ok(_videoService.Add(new Video(videoinput.Name, videoinput.Description, videoinput.Duration)));
         }
         catch (Exception ex)
@@ -89,7 +87,7 @@ public class VideoController : ControllerBase {
     /// <summary>
     /// позволяет удалить ролик из памяти
     /// </summary>
-    /// <param name="id"></param>
+    /// <param name="id">Уникальный идентификатор</param>
     /// <returns>Код результата</returns>
     [HttpDelete("{id}")]
     public IResult DeleteFromList(Guid id)
@@ -132,14 +130,14 @@ public class VideoController : ControllerBase {
     /// <summary>
     /// Позволяет обновить информацию о ролике. Меняется тот ролик, id которого был указан в запросе. Непосредсвтенно id поменять нельзя
     /// </summary>
-    /// <param name="video"></param>
+    /// <param name="videoinput">Ролик вместе с его ID</param>
     /// <returns>Код результата</returns>
     [HttpPut]
-    public IResult Update(Video video)
+    public IResult Update(Guid id,VideoInput videoinput)
     {
         try
         {
-            _videoService.Update(video);
+            _videoService.Update(id,videoinput);
             return TypedResults.Ok();
         }
         catch (NullReferenceException ex)
