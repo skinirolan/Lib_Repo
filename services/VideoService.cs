@@ -84,12 +84,25 @@ public class VideoService:IVideoService
         }
         else
         {
-            _logger.LogError("The video list is empty");
+            _logger.LogError("Video with current id doesn't exist");
+            throw new NullReferenceException("Video with current id doesn't exist");
+        }
+    }
+    //<inheritdoc/>
+    public void UpdateDescription(Guid id, string description)
+    {
+        var origin = Get(id);
+        if (origin != null)
+        {
+            origin.Description = description;
+        }
+        else
+        {
+            _logger.LogError("Video with current id doesn't exist");
             throw new NullReferenceException("Video with current id doesn't exist");
         }
     }
 
     //<inheritdoc/> 
     public void Clear()=> _videos.Clear();
-    
 }

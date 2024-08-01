@@ -21,21 +21,30 @@ public interface IVideoService
     /// <summary>
     /// Удаление ролика из листа
     /// </summary>
-    /// <param name="id"></param>
+    /// <param name="id">Уникальный идентификатор</param>
     void Delete(Guid id);
 
     /// <summary>
-    /// Изменение информации о ролике
+    /// Изменение параметров ролика соответствующего id
     /// </summary>
-    /// <param name="video"></param>
+    /// <param name="id">Уникальный идентификатор</param>
+    /// <param name="videoinput">Ролик</param>
     void Update(Guid id,VideoInput videoinput);
 
     /// <summary>
     /// Получение ролика по id
     /// </summary>
-    /// <param name="id"></param>
+    /// <param name="id">Уникальный идентификатор</param>
     /// <returns>видеоролик с соответствующим id</returns>
     Video Get(Guid id);
+
+    /// <summary>
+    /// Изменяет описание ролика
+    /// </summary>
+    /// <param name="id">Уникальный идентификатор</param>
+    /// <param name="description">Текст описания ролика</param>
+    void UpdateDescription(Guid id, string description);
+
 
     /// <summary>
     /// Полная очистка списка

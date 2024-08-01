@@ -132,12 +132,37 @@ public class VideoController : ControllerBase {
     /// </summary>
     /// <param name="videoinput">Ролик вместе с его ID</param>
     /// <returns>Код результата</returns>
-    [HttpPut]
+    [HttpPut("{id}")]
     public IResult Update(Guid id,VideoInput videoinput)
     {
         try
         {
             _videoService.Update(id,videoinput);
+            return TypedResults.Ok();
+        }
+        catch (NullReferenceException ex)
+        {
+            return TypedResults.NotFound("Сущность не найдена");
+        }
+        catch (Exception ex)
+        {
+            return TypedResults.Json("Произошла неизвестная ошибка",
+                statusCode: StatusCodes.Status500InternalServerError);
+        }
+    }
+
+    /// <summary>
+    /// Позволяет изменить описание выбранного ролика
+    /// </summary>
+    /// <param name="id">Уникальный идентификатор</param>
+    /// <param name="description">Новое описание ролика</param>
+    /// <returns></returns>
+    [HttpPatch("{id}")]
+    public IResult UpdateDescription(Guid id, string description)
+    {
+        try
+        {
+            _videoService.UpdateDescription(id, description);
             return TypedResults.Ok();
         }
         catch (NullReferenceException ex)
