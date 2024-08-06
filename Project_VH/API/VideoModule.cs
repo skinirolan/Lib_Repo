@@ -3,11 +3,15 @@ using Carter.OpenApi;
 using Project_VH.Models;
 using Project_VH.Services;
 using Microsoft.AspNetCore.Mvc;
+using Dal;
 
 namespace Project_VH.API;
 
 public class VideoModule : ICarterModule
 {
+
+    
+
     /// <inheritdoc/>
     public void AddRoutes(IEndpointRouteBuilder app)
     {
@@ -17,16 +21,19 @@ public class VideoModule : ICarterModule
             return op;
         });
 
-        group.MapGet(string.Empty, (IVideoService videoService)
-            => videoService.GetFullVideoList())
-            .WithOpenApi(op =>
-            {
-                op.Description = "Возвращает список всех видео.";
-                op.Summary = "Возвращает список всех видео.";
-                op.Responses["200"].Description = "Видео успешно получено.";
-                op.Responses.Add("500", new() { Description = "Видео получить не удалось." });
-                return op;
-            });
+        //group.MapGet(string.Empty, (IVideoService videoService)
+        //    => videoService.GetFullVideoList()) 
+        //    .WithOpenApi(op =>
+        //    {
+        //        op.Description = "Возвращает список всех видео.";
+        //        op.Summary = "Возвращает список всех видео.";
+        //        op.Responses["200"].Description = "Видео успешно получено.";
+        //        op.Responses.Add("500", new() { Description = "Видео получить не удалось." });
+        //        return op;
+        //    });
+
+
+        group.MapPost("BALLS", AddVideoToDB);
 
         group.MapGet("{id}", GetVideo)
             .WithOpenApi(op =>
@@ -48,6 +55,9 @@ public class VideoModule : ICarterModule
                 op.Responses.Add("500", new() { Description = "Видео создать не удалось." });
                 return op;
             });
+
+
+        
 
         group.MapPut("{id}", UpdateVideo)
             .WithOpenApi(op =>
@@ -208,4 +218,26 @@ public class VideoModule : ICarterModule
                 statusCode: StatusCodes.Status500InternalServerError);
         }
     }
+
+
+    /// <summary>
+    /// Добавляет видео в бд
+    /// </summary>
+    /// <param name="videoinput">входные параметры</param>
+    /// <returns>пока нихуя</returns>
+    private IResult AddVideoToDB(VideoInput videoinput)
+    {
+
+        VideoEntity videoEntity = new VideoEntity
+        {
+            Name = videoinput.Name,
+            Description = videoinput.Description,
+            Duration = videoinput.Duration,
+            Id = Guid.NewGuid()
+        };
+        var dbcontext = new VideoDBContext();
+        dbcontext.videoEntities.Add(videoEntity);
+        return TypedResults.Ok(videoEntity.Id);
+    }
+      
 }

@@ -3,6 +3,7 @@ using Project_VH.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Dal;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,8 @@ builder.Services.AddSwaggerGen(options =>
         Example = new OpenApiString("00:00:00")
     });
 });
+
+builder.Services.AddDbContext<VideoDBContext>();
 
 
 builder.Services.AddSingleton<IVideoService, VideoService>();
