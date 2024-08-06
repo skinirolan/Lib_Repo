@@ -3,6 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Dal;
 
+
+/// <summary>
+/// Пока ни где не используется. Когда роазберусь с бд, переделаю все под репос
+/// </summary>
 public class VideoRepository
 {
     private VideoDBContext _dbContext;

@@ -235,8 +235,11 @@ public class VideoModule : ICarterModule
             Duration = videoinput.Duration,
             Id = Guid.NewGuid()
         };
+
+        //пока просто хочу пока что добавить данные хоть как-то, репозиторий добавлю, когда все я разберусь
         var dbcontext = new VideoDBContext();
         dbcontext.videoEntities.Add(videoEntity);
+        dbcontext.SaveChanges();
         return TypedResults.Ok(videoEntity.Id);
     }
       

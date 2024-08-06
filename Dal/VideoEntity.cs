@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 namespace Dal;
-public class VideoEntity
+public class VideoEntity//пока так
 {
     [Required]public Guid Id { get; set; }
     [Required]public string Name { get; set; }
