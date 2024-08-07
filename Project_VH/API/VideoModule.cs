@@ -3,7 +3,8 @@ using Carter.OpenApi;
 using Project_VH.Models;
 using Project_VH.Services;
 using Microsoft.AspNetCore.Mvc;
-using Dal;
+using Dal.DBContext;
+using Dal.Repositories;
 
 namespace Project_VH.API;
 
@@ -34,6 +35,7 @@ public class VideoModule : ICarterModule
 
 
         group.MapPost("BALLS", AddVideoToDB);
+        group.MapGet("BALLS", GetVideoFromDB);
 
         group.MapGet("{id}", GetVideo)
             .WithOpenApi(op =>
@@ -222,24 +224,44 @@ public class VideoModule : ICarterModule
     /// </summary>
     /// <param name="videoinput">входные параметры</param>
     /// <returns>пока нихуя</returns>
-    private IResult AddVideoToDB(VideoInput videoinput)
+    private IResult AddVideoToDB(IVideoRepository videoRepository, VideoInput videoinput)
     {
-
-        VideoEntity videoEntity = new VideoEntity
+        try
         {
-            Name = videoinput.Name,
-            Description = videoinput.Description,
-            Duration = videoinput.Duration,
-            Id = Guid.NewGuid()
-        };
-
-        //пока просто хочу пока что добавить данные хоть как-то, репозиторий добавлю, когда все я разберусь
+            
+            videoRepository.
+        }
+        catch (Exception)
+        {
+            return TypedResults.Json("Произошла неизвестная ошибка",
+                statusCode: StatusCodes.Status500InternalServerError);
+        }
         
-        var dbcontext = new VideoDBContext();
-        dbcontext.Database.EnsureCreated(); // короче это наш бро на все времена, держим в голове
-        dbcontext.VideoEntities.Add(videoEntity);
-        dbcontext.SaveChanges();
-        return TypedResults.Ok(videoEntity.Id);
+       
     }
-      
+
+    private IResult GetVideoFromDB(IVideoRepository videoRepository, Guid id)
+    {
+        try
+        {
+            var video = videoRepository.GetById(id);
+            return TypedResults.Ok(video);
+        }
+        catch (NullReferenceException)
+        {
+            return TypedResults.NotFound("Сущность не найдена");
+        }
+        catch (Exception)
+        {
+            return TypedResults.Json("Произошла неизвестная ошибка",
+                statusCode: StatusCodes.Status500InternalServerError);
+        }
+    }
+
+
+
+
+
+   
+
 }

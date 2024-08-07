@@ -3,7 +3,8 @@ using Project_VH.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
-using Dal;
+using Dal.DBContext;
+using Dal.Repositories;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,7 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.AddDbContext<VideoDBContext>();
 
+builder.Services.AddScoped<IVideoRepository, VideoRepository>();
 
 builder.Services.AddSingleton<IVideoService, VideoService>();
 var app = builder.Build();
