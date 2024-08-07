@@ -7,7 +7,7 @@ namespace Dal;
 public class VideoDBContext : DbContext
 {
     private string _connectionString;
-    public VideoDBContext()
+    public VideoDBContext():base()
     {
         _connectionString = "Host=localhost;Port=5432;Database=VideoDB;Username=postgres;Password=admin";//несколько раз проверял
     }
@@ -32,5 +32,5 @@ public class VideoDBContext : DbContext
            .Property(v => v.Duration);
     }
 
-    public DbSet<VideoEntity> videoEntities { get; set; }
+    public DbSet<VideoEntity> VideoEntities { get; set; } 
 }

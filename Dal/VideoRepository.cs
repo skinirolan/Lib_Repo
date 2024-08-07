@@ -18,7 +18,7 @@ public class VideoRepository
 
     public async Task<List<VideoEntity>> GetAll()
     {
-        return _dbContext.videoEntities
+        return _dbContext.VideoEntities
             .AsNoTracking()
             .ToList();
     }

@@ -56,9 +56,6 @@ public class VideoModule : ICarterModule
                 return op;
             });
 
-
-        
-
         group.MapPut("{id}", UpdateVideo)
             .WithOpenApi(op =>
             {
@@ -237,8 +234,10 @@ public class VideoModule : ICarterModule
         };
 
         //пока просто хочу пока что добавить данные хоть как-то, репозиторий добавлю, когда все я разберусь
+        
         var dbcontext = new VideoDBContext();
-        dbcontext.videoEntities.Add(videoEntity);
+        dbcontext.Database.EnsureCreated(); // короче это наш бро на все времена, держим в голове
+        dbcontext.VideoEntities.Add(videoEntity);
         dbcontext.SaveChanges();
         return TypedResults.Ok(videoEntity.Id);
     }
