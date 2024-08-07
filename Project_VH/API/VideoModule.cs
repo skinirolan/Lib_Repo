@@ -33,9 +33,11 @@ public class VideoModule : ICarterModule
         //        return op;
         //    });
 
-
+        group.MapGet("BALLS/B",GetAllFromDB);
         group.MapPost("BALLS", AddVideoToDB);
         group.MapGet("BALLS", GetVideoFromDB);
+        group.MapPut("BALLS",UpdateVideoAtDB);
+        group.MapDelete("BALLS",DeleteVideoFromDB);
 
         group.MapGet("{id}", GetVideo)
             .WithOpenApi(op =>
@@ -222,24 +224,36 @@ public class VideoModule : ICarterModule
     /// <summary>
     /// Добавляет видео в бд
     /// </summary>
-    /// <param name="videoinput">входные параметры</param>
-    /// <returns>пока нихуя</returns>
+    /// <param name="videoinput">входные параметры ролика</param>
+    /// <returns>ID нового ролика</returns>
     private IResult AddVideoToDB(IVideoRepository videoRepository, VideoInput videoinput)
     {
         try
         {
+            var id = Guid.NewGuid();
+            videoRepository.Add(new VideoEntity
+            {
+                Id = id,
+                Name = videoinput.Name,
+                Description = videoinput.Description,
+                Duration = videoinput.Duration
+            });
             
-            videoRepository.
+            return TypedResults.Ok(id);
         }
         catch (Exception)
         {
             return TypedResults.Json("Произошла неизвестная ошибка",
                 statusCode: StatusCodes.Status500InternalServerError);
-        }
-        
-       
+        }       
     }
 
+    /// <summary>
+    /// Возвращает втдео из БД по ID
+    /// </summary>
+    /// <param name="videoRepository">репозиторий</param>
+    /// <param name="id">Уникальный идентификатор</param>
+    /// <returns>Ролик с заданным ID</returns>
     private IResult GetVideoFromDB(IVideoRepository videoRepository, Guid id)
     {
         try
@@ -258,10 +272,77 @@ public class VideoModule : ICarterModule
         }
     }
 
+    /// <summary>
+    /// Обновляет видеоролик с выбранным ID 
+    /// </summary>
+    /// <param name="videoRepository">репозиторий</param>
+    /// <param name="id">Уникальынй идентификатор</param>
+    /// <param name="videoinput">Новые данные ролика</param>
+    /// <returns></returns>
+    private IResult UpdateVideoAtDB(IVideoRepository videoRepository, Guid id, VideoInput videoinput)
+    {
+        try
+        {
+            videoRepository.Update(new VideoEntity
+            {
+                Id=id,
+                Name=videoinput.Name,
+                Description=videoinput.Description,
+                Duration = videoinput.Duration
+            });
+            return TypedResults.Ok();
+        }
+        catch (NullReferenceException)
+        {
+            return TypedResults.NotFound("Сущность не найдена");
+        }
+        catch (Exception)
+        {
+            return TypedResults.Json("Произошла неизвестная ошибка",
+                statusCode: StatusCodes.Status500InternalServerError);
+        }
+    }
 
+    /// <summary>
+    /// Возвращает список всех видеороликов
+    /// </summary>
+    /// <param name="videoRepository">репозиторий</param>
+    /// <returns>List со всеми видеороликами</returns>
+    private IResult GetAllFromDB(IVideoRepository videoRepository)
+    {
+        try
+        {
+            var videoList=videoRepository.GetAll();
+            return TypedResults.Ok(videoList);
+        }
+        catch (Exception)
+        {
+            return TypedResults.Json("Произошла неизвестная ошибка",
+                statusCode: StatusCodes.Status500InternalServerError);
+        }
+    }
 
-
-
-   
-
+    /// <summary>
+    /// Удаляет видео из БД
+    /// </summary>
+    /// <param name="videoRepository">репозиторий</param>
+    /// <param name="id">Уникальный идентификатор</param>
+    /// <returns>ничего</returns>
+    private IResult DeleteVideoFromDB(IVideoRepository videoRepository, Guid id)
+    {
+        try
+        {
+            videoRepository.Delete(id);
+            return TypedResults.Ok();
+        }
+        catch (NullReferenceException)
+        {
+            return TypedResults.NotFound("Сущность не найдена");
+        }
+        catch (Exception)
+        {
+            return TypedResults.Json("Произошла неизвестная ошибка",
+                statusCode: StatusCodes.Status500InternalServerError);
+        }
+    }
 }

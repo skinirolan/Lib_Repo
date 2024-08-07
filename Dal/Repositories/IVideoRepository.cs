@@ -15,8 +15,8 @@ public interface IVideoRepository
     /// <param name="name">Новое имя ролика</param>
     /// <param name="description">новая длительность ролика</param>
     /// <param name="duration">новая длительность ролика</param>
-    /// <returns>ID добавленного ролика</returns>
-    public Task<Guid> Add(VideoEntity videoEntity);
+    /// <returns>Ничего</returns>
+    public Task Add(VideoEntity videoEntity);
 
     /// <summary>
     /// Обновляет все данные о ролике
