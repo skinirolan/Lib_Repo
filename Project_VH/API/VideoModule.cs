@@ -10,9 +10,7 @@ namespace Project_VH.API;
 
 public class VideoModule : ICarterModule
 {
-
     
-
     /// <inheritdoc/>
     public void AddRoutes(IEndpointRouteBuilder app)
     {
@@ -33,66 +31,114 @@ public class VideoModule : ICarterModule
         //        return op;
         //    });
 
-        group.MapGet("BALLS/B",GetAllFromDB);
-        group.MapPost("BALLS", AddVideoToDB);
-        group.MapGet("BALLS", GetVideoFromDB);
-        group.MapPut("BALLS",UpdateVideoAtDB);
-        group.MapDelete("BALLS",DeleteVideoFromDB);
-
-        group.MapGet("{id}", GetVideo)
+        group.MapGet(string.Empty, GetAllFromDB)
             .WithOpenApi(op =>
             {
-                op.Description = "Возвращает видео по id";
-                op.Summary = "Возвращает видео по id";
-                op.Responses["200"].Description = "Видео успешно получено.";
-                op.Responses.Add("404", new() { Description = "Видео не найдено." });
-                op.Responses.Add("500", new() { Description = "Видео создать не удалось." });
+                op.Description = "Возвращает список всех видеороликов из базы данных";
+                op.Summary = "Возвращает список всех видеороликов из базы данных";
+                op.Responses["200"].Description = "Видео успешно получено";
+                op.Responses.Add("404", new() { Description = "Видео не найдено" });
+                op.Responses.Add("500", new() { Description = "Неизвестная ошибка" });
                 return op;
             });
 
-        group.MapPost(string.Empty, AddVideo)
+        group.MapPost(string.Empty, AddVideoToDB)
             .WithOpenApi(op =>
             {
-                op.Description = "Добавляет видео в список.";
-                op.Summary = "Добавляет видео в список.";
-                op.Responses["200"].Description = "Видео успешно создано.";
-                op.Responses.Add("500", new() { Description = "Видео создать не удалось." });
+                op.Description = "Добавляет видео в базу данных";
+                op.Summary = "Добавляет видео в базу данных";
+                op.Responses["200"].Description = "Видео успешно получено";
+                op.Responses.Add("404", new() { Description = "Видео не найдено" });
+                op.Responses.Add("500", new() { Description = "Видео получить не удалось" });
                 return op;
             });
 
-        group.MapPut("{id}", UpdateVideo)
+        group.MapGet("{id}", GetVideoFromDB)
             .WithOpenApi(op =>
             {
-                op.Description = "Обнволяет данные о видео.";
-                op.Summary = "Обнволяет данные о видео.";
-                op.Responses["200"].Description = "Видео успешно обновлено.";
-                op.Responses.Add("404", new() { Description = "Видео не найдено." });
-                op.Responses.Add("500", new() { Description = "Видео обновить не удалось." });
-                op.Parameters[0].Description = "Id видео.";
+                op.Description = "Возвращает видео с соотвтетсвующим id из базы данных";
+                op.Summary = "Возвращает видео с соотвтетсвующим id из базы данных";
+                op.Responses["200"].Description = "Видео успешно создать.";
+                op.Responses.Add("500", new() { Description = "Видео создать не удалось" });
                 return op;
             });
 
-        group.MapPatch("{id}", UpdateVideoDecription)
+        group.MapPut("{id}", UpdateVideoAtDB)
             .WithOpenApi(op =>
             {
-                op.Description = "Обнволяетописание видео.";
-                op.Summary = "Обнволяет описание видео.";
-                op.Responses["200"].Description = "Видео успешно обновлено.";
-                op.Responses.Add("404", new() { Description = "Видео не найдено." });
-                op.Responses.Add("500", new() { Description = "Видео обновить не удалось." });
+                op.Description = "Обновляет видео в базе данных";
+                op.Summary = "Обновляет видео в базе данных";
+                op.Responses["200"].Description = "Видео успешно обновлено";
+                op.Responses.Add("404", new() { Description = "Видео не найдено" });
+                op.Responses.Add("500", new() { Description = "Видео получить не удалось" });
                 return op;
             });
 
-        group.MapDelete("{id}", DeleteVideo)
+        group.MapDelete("{id}", DeleteVideoFromDB)
             .WithOpenApi(op =>
             {
-                op.Description = "Удаляет видео из списка";
-                op.Summary = "Удаляет видео из списка";
-                op.Responses["200"].Description = "Видео успешно уддалено.";
-                op.Responses.Add("404", new() { Description = "Видео не найдено." });
-                op.Responses.Add("500", new() { Description = "Видео удалить не удалось." });
+                op.Description = "Удаляет видео с выбранным id в базе данных";
+                op.Summary = "Удаляет видео с выбранным id в базе данных";
+                op.Responses["200"].Description = "Видео успешно удалено";
+                op.Responses.Add("404", new() { Description = "Видео не найдено" });
+                op.Responses.Add("500", new() { Description = "Видео удалить не удалось" });
                 return op;
             });
+
+        //group.MapGet("{id}", GetVideo)
+        //    .WithOpenApi(op =>
+        //    {
+        //        op.Description = "Возвращает видео по id";
+        //        op.Summary = "Возвращает видео по id";
+        //        op.Responses["200"].Description = "Видео успешно получено.";
+        //        op.Responses.Add("404", new() { Description = "Видео не найдено." });
+        //        op.Responses.Add("500", new() { Description = "Видео создать не удалось." });
+        //        return op;
+        //    });
+
+        //group.MapPost(string.Empty, AddVideo)
+        //    .WithOpenApi(op =>
+        //    {
+        //        op.Description = "Добавляет видео в список.";
+        //        op.Summary = "Добавляет видео в список.";
+        //        op.Responses["200"].Description = "Видео успешно создано.";
+        //        op.Responses.Add("500", new() { Description = "Видео создать не удалось." });
+        //        return op;
+        //    });
+
+        //group.MapPut("{id}", UpdateVideo)
+        //    .WithOpenApi(op =>
+        //    {
+        //        op.Description = "Обнволяет данные о видео.";
+        //        op.Summary = "Обнволяет данные о видео.";
+        //        op.Responses["200"].Description = "Видео успешно обновлено.";
+        //        op.Responses.Add("404", new() { Description = "Видео не найдено." });
+        //        op.Responses.Add("500", new() { Description = "Видео обновить не удалось." });
+        //        op.Parameters[0].Description = "Id видео.";
+        //        return op;
+        //    });
+
+        //group.MapPatch("{id}", UpdateVideoDecription)
+        //    .WithOpenApi(op =>
+        //    {
+        //        op.Description = "Обнволяетописание видео.";
+        //        op.Summary = "Обнволяет описание видео.";
+        //        op.Responses["200"].Description = "Видео успешно обновлено.";
+        //        op.Responses.Add("404", new() { Description = "Видео не найдено." });
+        //        op.Responses.Add("500", new() { Description = "Видео обновить не удалось." });
+        //        return op;
+        //    });
+
+        //group.MapDelete("{id}", DeleteVideo)
+        //    .WithOpenApi(op =>
+        //    {
+        //        op.Description = "Удаляет видео из списка";
+        //        op.Summary = "Удаляет видео из списка";
+        //        op.Responses["200"].Description = "Видео успешно уддалено.";
+        //        op.Responses.Add("404", new() { Description = "Видео не найдено." });
+        //        op.Responses.Add("500", new() { Description = "Видео удалить не удалось." });
+        //        return op;
+        //    });
     }
 
     /// <summary>
@@ -278,16 +324,16 @@ public class VideoModule : ICarterModule
     /// <param name="videoRepository">репозиторий</param>
     /// <param name="id">Уникальынй идентификатор</param>
     /// <param name="videoinput">Новые данные ролика</param>
-    /// <returns></returns>
+    /// <returns>Код выполнения</returns>
     private IResult UpdateVideoAtDB(IVideoRepository videoRepository, Guid id, VideoInput videoinput)
     {
         try
         {
             videoRepository.Update(new VideoEntity
             {
-                Id=id,
-                Name=videoinput.Name,
-                Description=videoinput.Description,
+                Id = id,
+                Name = videoinput.Name,
+                Description = videoinput.Description,
                 Duration = videoinput.Duration
             });
             return TypedResults.Ok();
@@ -327,7 +373,7 @@ public class VideoModule : ICarterModule
     /// </summary>
     /// <param name="videoRepository">репозиторий</param>
     /// <param name="id">Уникальный идентификатор</param>
-    /// <returns>ничего</returns>
+    /// <returns>Код выполнения</returns>
     private IResult DeleteVideoFromDB(IVideoRepository videoRepository, Guid id)
     {
         try
