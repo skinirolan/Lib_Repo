@@ -71,3 +71,7 @@ D:\projects\asp\Project_VH\Project_VH\bin\Debug\net8.0\Npgsql.EntityFrameworkCor
 D:\projects\asp\Project_VH\Project_VH\bin\Debug\net8.0\Dal.dll
 D:\projects\asp\Project_VH\Project_VH\bin\Debug\net8.0\Dal.pdb
 D:\projects\asp\Project_VH\Project_VH\obj\Debug\net8.0\Project_VH.sourcelink.json
+D:\projects\asp\Project_VH\Project_VH\bin\Debug\net8.0\Domain.dll
+D:\projects\asp\Project_VH\Project_VH\bin\Debug\net8.0\Domain.pdb
+D:\projects\asp\Project_VH\Project_VH\bin\Debug\net8.0\Contract.dll
+D:\projects\asp\Project_VH\Project_VH\bin\Debug\net8.0\Contract.pdb

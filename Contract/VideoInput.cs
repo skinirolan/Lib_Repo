@@ -1,4 +1,4 @@
-﻿namespace Project_VH.Models;
+﻿namespace Contract;
 
 /// <summary>
 /// Входной ролик

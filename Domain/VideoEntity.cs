@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Dal.DBContext;
+namespace Domain.Entities;
 
 /// <summary>
 /// Сущность для базы данных

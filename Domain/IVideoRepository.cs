@@ -1,6 +1,6 @@
-﻿using Dal.DBContext;
+﻿using Domain.Entities;
 
-namespace Dal.Repositories;
+namespace Domain.Repositories;
 
 /// <summary>
 /// Репозиторий для работы с бд

@@ -662,10 +662,21 @@
           "buildTransitive/net6.0/System.Text.Json.targets": {}
         }
       },
+      "Contract/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Contract.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Contract.dll": {}
+        }
+      },
       "Dal/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
+          "Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "8.0.7",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.4"
         },
@@ -674,6 +685,16 @@
         },
         "runtime": {
           "bin/placeholder/Dal.dll": {}
+        }
+      },
+      "Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Domain.dll": {}
         }
       }
     }
@@ -2451,15 +2472,26 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Contract/1.0.0": {
+      "type": "project",
+      "path": "../Contract/Contract.csproj",
+      "msbuildProject": "../Contract/Contract.csproj"
+    },
     "Dal/1.0.0": {
       "type": "project",
       "path": "../Dal/Dal.csproj",
       "msbuildProject": "../Dal/Dal.csproj"
+    },
+    "Domain/1.0.0": {
+      "type": "project",
+      "path": "../Domain/Domain.csproj",
+      "msbuildProject": "../Domain/Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "Carter >= 8.2.1",
+      "Contract >= 1.0.0",
       "Dal >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 8.0.0",
       "Microsoft.EntityFrameworkCore >= 8.0.7",
@@ -2494,6 +2526,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
+            "D:\\projects\\asp\\Project_VH\\Contract\\Contract.csproj": {
+              "projectPath": "D:\\projects\\asp\\Project_VH\\Contract\\Contract.csproj"
+            },
             "D:\\projects\\asp\\Project_VH\\Dal\\Dal.csproj": {
               "projectPath": "D:\\projects\\asp\\Project_VH\\Dal\\Dal.csproj"
             }

@@ -9,6 +9,7 @@
       "Project_VH/1.0.0": {
         "dependencies": {
           "Carter": "8.2.1",
+          "Contract": "1.0.0",
           "Dal": "1.0.0",
           "Microsoft.AspNetCore.OpenApi": "8.0.0",
           "Microsoft.EntityFrameworkCore": "8.0.7",
@@ -346,13 +347,24 @@
           "System.Text.Encodings.Web": "8.0.0"
         }
       },
+      "Contract/1.0.0": {
+        "runtime": {
+          "Contract.dll": {}
+        }
+      },
       "Dal/1.0.0": {
         "dependencies": {
+          "Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "8.0.7",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.4"
         },
         "runtime": {
           "Dal.dll": {}
+        }
+      },
+      "Domain/1.0.0": {
+        "runtime": {
+          "Domain.dll": {}
         }
       }
     }
@@ -601,7 +613,17 @@
       "path": "system.text.json/8.0.0",
       "hashPath": "system.text.json.8.0.0.nupkg.sha512"
     },
+    "Contract/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Dal/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Domain/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
