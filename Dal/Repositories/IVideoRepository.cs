@@ -33,13 +33,13 @@ public interface IVideoRepository
     /// </summary>
     /// <param name="id"></param>
     /// <returns>Ничего</returns>
-    public Task Delete(Guid id);
+    public void Delete(Guid id);
 
     /// <summary>
     /// Получение всех роликов из бд
     /// </summary>
     /// <returns>Список роликов</returns>
-    public Task<List<VideoEntity>> GetAll();
+    public List<VideoEntity> GetAll();
 
     /// <summary>
     /// Получение ролика из бд по id

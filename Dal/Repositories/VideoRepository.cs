@@ -18,7 +18,7 @@ public class VideoRepository:IVideoRepository
     }
 
     //<inheritdoc/>
-    public async Task<List<VideoEntity>> GetAll()
+    public List<VideoEntity> GetAll()
     {
         return _dbContext.VideoEntities
             .AsNoTracking()
@@ -48,7 +48,7 @@ public class VideoRepository:IVideoRepository
     }
 
     //<inheritdoc/>
-    public async Task Delete(Guid id)
+    public void Delete(Guid id)
     {
 
        var video = _dbContext.VideoEntities.FirstOrDefault(x=>x.Id==id);
