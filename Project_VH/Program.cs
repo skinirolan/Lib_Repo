@@ -2,9 +2,9 @@ using Carter;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
-using Dal.DBContext;
-using Dal.Repositories;
-using Domain.Repositories;
+using Project_VH.Dal.DBContext;
+using Project_VH.Dal.Repositories;
+using Project_VH.Domain.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();

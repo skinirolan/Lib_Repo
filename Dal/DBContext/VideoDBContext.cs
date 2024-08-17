@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Options;
-using Domain.Entities;
+using Project_VH.Domain.Entities;
 
-namespace Dal.DBContext;
+namespace Project_VH.Dal.DBContext;
 
 /// <summary>
 /// контекст базы данных для работы с видео

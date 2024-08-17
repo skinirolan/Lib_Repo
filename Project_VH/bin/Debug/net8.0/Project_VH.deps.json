@@ -9,11 +9,11 @@
       "Project_VH/1.0.0": {
         "dependencies": {
           "Carter": "8.2.1",
-          "Contract": "1.0.0",
-          "Dal": "1.0.0",
           "Microsoft.AspNetCore.OpenApi": "8.0.0",
           "Microsoft.EntityFrameworkCore": "8.0.7",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.4",
+          "Project_VH.Contract": "1.0.0",
+          "Project_VH.Dal": "1.0.0",
           "Swashbuckle.AspNetCore": "6.4.0"
         },
         "runtime": {
@@ -347,24 +347,24 @@
           "System.Text.Encodings.Web": "8.0.0"
         }
       },
-      "Contract/1.0.0": {
+      "Project_VH.Contract/1.0.0": {
         "runtime": {
-          "Contract.dll": {}
+          "Project_VH.Contract.dll": {}
         }
       },
-      "Dal/1.0.0": {
+      "Project_VH.Dal/1.0.0": {
         "dependencies": {
-          "Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "8.0.7",
-          "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.4"
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.4",
+          "Project_VH.Domain": "1.0.0"
         },
         "runtime": {
-          "Dal.dll": {}
+          "Project_VH.Dal.dll": {}
         }
       },
-      "Domain/1.0.0": {
+      "Project_VH.Domain/1.0.0": {
         "runtime": {
-          "Domain.dll": {}
+          "Project_VH.Domain.dll": {}
         }
       }
     }
@@ -613,17 +613,17 @@
       "path": "system.text.json/8.0.0",
       "hashPath": "system.text.json.8.0.0.nupkg.sha512"
     },
-    "Contract/1.0.0": {
+    "Project_VH.Contract/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Dal/1.0.0": {
+    "Project_VH.Dal/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Domain/1.0.0": {
+    "Project_VH.Domain/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

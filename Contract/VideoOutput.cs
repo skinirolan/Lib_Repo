@@ -1,4 +1,4 @@
-﻿namespace Contract;
+﻿namespace Project_VH.Contract;
 
 /// <summary>
 /// Выходной ролик

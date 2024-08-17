@@ -662,39 +662,39 @@
           "buildTransitive/net6.0/System.Text.Json.targets": {}
         }
       },
-      "Contract/1.0.0": {
+      "Project_VH.Contract/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "compile": {
-          "bin/placeholder/Contract.dll": {}
+          "bin/placeholder/Project_VH.Contract.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Contract.dll": {}
+          "bin/placeholder/Project_VH.Contract.dll": {}
         }
       },
-      "Dal/1.0.0": {
+      "Project_VH.Dal/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "8.0.7",
-          "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.4"
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.4",
+          "Project_VH.Domain": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/Dal.dll": {}
+          "bin/placeholder/Project_VH.Dal.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Dal.dll": {}
+          "bin/placeholder/Project_VH.Dal.dll": {}
         }
       },
-      "Domain/1.0.0": {
+      "Project_VH.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "compile": {
-          "bin/placeholder/Domain.dll": {}
+          "bin/placeholder/Project_VH.Domain.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Domain.dll": {}
+          "bin/placeholder/Project_VH.Domain.dll": {}
         }
       }
     }
@@ -2472,30 +2472,30 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Contract/1.0.0": {
+    "Project_VH.Contract/1.0.0": {
       "type": "project",
-      "path": "../Contract/Contract.csproj",
-      "msbuildProject": "../Contract/Contract.csproj"
+      "path": "../Contract/Project_VH.Contract.csproj",
+      "msbuildProject": "../Contract/Project_VH.Contract.csproj"
     },
-    "Dal/1.0.0": {
+    "Project_VH.Dal/1.0.0": {
       "type": "project",
-      "path": "../Dal/Dal.csproj",
-      "msbuildProject": "../Dal/Dal.csproj"
+      "path": "../Dal/Project_VH.Dal.csproj",
+      "msbuildProject": "../Dal/Project_VH.Dal.csproj"
     },
-    "Domain/1.0.0": {
+    "Project_VH.Domain/1.0.0": {
       "type": "project",
-      "path": "../Domain/Domain.csproj",
-      "msbuildProject": "../Domain/Domain.csproj"
+      "path": "../Domain/Project_VH.Domain.csproj",
+      "msbuildProject": "../Domain/Project_VH.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "Carter >= 8.2.1",
-      "Contract >= 1.0.0",
-      "Dal >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 8.0.0",
       "Microsoft.EntityFrameworkCore >= 8.0.7",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 8.0.4",
+      "Project_VH.Contract >= 1.0.0",
+      "Project_VH.Dal >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
   },
@@ -2526,11 +2526,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\projects\\asp\\Project_VH\\Contract\\Contract.csproj": {
-              "projectPath": "D:\\projects\\asp\\Project_VH\\Contract\\Contract.csproj"
+            "D:\\projects\\asp\\Project_VH\\Contract\\Project_VH.Contract.csproj": {
+              "projectPath": "D:\\projects\\asp\\Project_VH\\Contract\\Project_VH.Contract.csproj"
             },
-            "D:\\projects\\asp\\Project_VH\\Dal\\Dal.csproj": {
-              "projectPath": "D:\\projects\\asp\\Project_VH\\Dal\\Dal.csproj"
+            "D:\\projects\\asp\\Project_VH\\Dal\\Project_VH.Dal.csproj": {
+              "projectPath": "D:\\projects\\asp\\Project_VH\\Dal\\Project_VH.Dal.csproj"
             }
           }
         }

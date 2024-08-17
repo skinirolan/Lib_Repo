@@ -1,6 +1,6 @@
-﻿using Domain.Entities;
+﻿using Project_VH.Domain.Entities;
 
-namespace Domain.Repositories;
+namespace Project_VH.Domain.Repositories;
 
 /// <summary>
 /// Репозиторий для работы с бд

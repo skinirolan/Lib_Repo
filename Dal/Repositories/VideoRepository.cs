@@ -1,10 +1,10 @@
-﻿using Dal.DBContext;
+﻿using Project_VH.Dal.DBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
-using Domain.Repositories;
-using Domain.Entities;
+using Project_VH.Domain.Repositories;
+using Project_VH.Domain.Entities;
 
-namespace Dal.Repositories;
+namespace Project_VH.Dal.Repositories;
 
 //<inheritdoc/>
 public class VideoRepository:IVideoRepository

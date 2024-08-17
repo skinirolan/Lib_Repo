@@ -5,11 +5,11 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project_VH", "Project_VH\Project_VH.csproj", "{A6E4A9A7-ECB4-499B-8B9B-CBDAD7A51809}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dal", "Dal\Dal.csproj", "{CEA378A7-5423-45F3-94C1-1DFF172258B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project_VH.Dal", "Dal\Project_VH.Dal.csproj", "{CEA378A7-5423-45F3-94C1-1DFF172258B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{20A22557-DBB3-49F7-B526-A1061D9BE03E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project_VH.Domain", "Domain\Project_VH.Domain.csproj", "{20A22557-DBB3-49F7-B526-A1061D9BE03E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contract", "Contract\Contract.csproj", "{8D85D21E-6170-468B-BE24-A8E9C767DFEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project_VH.Contract", "Contract\Project_VH.Contract.csproj", "{8D85D21E-6170-468B-BE24-A8E9C767DFEB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

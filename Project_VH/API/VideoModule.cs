@@ -1,8 +1,8 @@
 ﻿using Carter;
 using Carter.OpenApi;
-using Domain.Entities;
-using Domain.Repositories;
-using Contract;
+using Project_VH.Domain.Entities;
+using Project_VH.Domain.Repositories;
+using Project_VH.Contract;
 
 namespace Project_VH.API;
 

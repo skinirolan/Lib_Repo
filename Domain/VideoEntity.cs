@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Entities;
+namespace Project_VH.Domain.Entities;
 
 /// <summary>
 /// Сущность для базы данных
