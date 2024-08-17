@@ -4,14 +4,14 @@
     "D:\\projects\\asp\\Project_VH\\Project_VH\\Project_VH.csproj": {}
   },
   "projects": {
-    "D:\\projects\\asp\\Project_VH\\Contract\\Project_VH.Contract.csproj": {
+    "D:\\projects\\asp\\Project_VH\\Project_VH.Contract\\Project_VH.Contract.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\asp\\Project_VH\\Contract\\Project_VH.Contract.csproj",
+        "projectUniqueName": "D:\\projects\\asp\\Project_VH\\Project_VH.Contract\\Project_VH.Contract.csproj",
         "projectName": "Project_VH.Contract",
-        "projectPath": "D:\\projects\\asp\\Project_VH\\Contract\\Project_VH.Contract.csproj",
+        "projectPath": "D:\\projects\\asp\\Project_VH\\Project_VH.Contract\\Project_VH.Contract.csproj",
         "packagesPath": "C:\\Users\\Егор\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\asp\\Project_VH\\Contract\\obj\\",
+        "outputPath": "D:\\projects\\asp\\Project_VH\\Project_VH.Contract\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Егор\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -59,14 +59,14 @@
         }
       }
     },
-    "D:\\projects\\asp\\Project_VH\\Dal\\Project_VH.Dal.csproj": {
+    "D:\\projects\\asp\\Project_VH\\Project_VH.Dal\\Project_VH.Dal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\asp\\Project_VH\\Dal\\Project_VH.Dal.csproj",
+        "projectUniqueName": "D:\\projects\\asp\\Project_VH\\Project_VH.Dal\\Project_VH.Dal.csproj",
         "projectName": "Project_VH.Dal",
-        "projectPath": "D:\\projects\\asp\\Project_VH\\Dal\\Project_VH.Dal.csproj",
+        "projectPath": "D:\\projects\\asp\\Project_VH\\Project_VH.Dal\\Project_VH.Dal.csproj",
         "packagesPath": "C:\\Users\\Егор\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\asp\\Project_VH\\Dal\\obj\\",
+        "outputPath": "D:\\projects\\asp\\Project_VH\\Project_VH.Dal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Егор\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -83,8 +83,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\projects\\asp\\Project_VH\\Domain\\Project_VH.Domain.csproj": {
-                "projectPath": "D:\\projects\\asp\\Project_VH\\Domain\\Project_VH.Domain.csproj"
+              "D:\\projects\\asp\\Project_VH\\Project_VH.Domain\\Project_VH.Domain.csproj": {
+                "projectPath": "D:\\projects\\asp\\Project_VH\\Project_VH.Domain\\Project_VH.Domain.csproj"
               }
             }
           }
@@ -128,14 +128,14 @@
         }
       }
     },
-    "D:\\projects\\asp\\Project_VH\\Domain\\Project_VH.Domain.csproj": {
+    "D:\\projects\\asp\\Project_VH\\Project_VH.Domain\\Project_VH.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\asp\\Project_VH\\Domain\\Project_VH.Domain.csproj",
+        "projectUniqueName": "D:\\projects\\asp\\Project_VH\\Project_VH.Domain\\Project_VH.Domain.csproj",
         "projectName": "Project_VH.Domain",
-        "projectPath": "D:\\projects\\asp\\Project_VH\\Domain\\Project_VH.Domain.csproj",
+        "projectPath": "D:\\projects\\asp\\Project_VH\\Project_VH.Domain\\Project_VH.Domain.csproj",
         "packagesPath": "C:\\Users\\Егор\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\asp\\Project_VH\\Domain\\obj\\",
+        "outputPath": "D:\\projects\\asp\\Project_VH\\Project_VH.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Егор\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -207,11 +207,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\projects\\asp\\Project_VH\\Contract\\Project_VH.Contract.csproj": {
-                "projectPath": "D:\\projects\\asp\\Project_VH\\Contract\\Project_VH.Contract.csproj"
+              "D:\\projects\\asp\\Project_VH\\Project_VH.Contract\\Project_VH.Contract.csproj": {
+                "projectPath": "D:\\projects\\asp\\Project_VH\\Project_VH.Contract\\Project_VH.Contract.csproj"
               },
-              "D:\\projects\\asp\\Project_VH\\Dal\\Project_VH.Dal.csproj": {
-                "projectPath": "D:\\projects\\asp\\Project_VH\\Dal\\Project_VH.Dal.csproj"
+              "D:\\projects\\asp\\Project_VH\\Project_VH.Dal\\Project_VH.Dal.csproj": {
+                "projectPath": "D:\\projects\\asp\\Project_VH\\Project_VH.Dal\\Project_VH.Dal.csproj"
               }
             }
           }

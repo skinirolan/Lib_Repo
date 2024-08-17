@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Contract\Project_VH.Contract.csproj" />
-    <ProjectReference Include="..\Dal\Project_VH.Dal.csproj" />
+    <ProjectReference Include="..\Project_VH.Contract\Project_VH.Contract.csproj" />
+    <ProjectReference Include="..\Project_VH.Dal\Project_VH.Dal.csproj" />
   </ItemGroup>
 
 </Project>

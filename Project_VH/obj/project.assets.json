@@ -2474,18 +2474,18 @@
     },
     "Project_VH.Contract/1.0.0": {
       "type": "project",
-      "path": "../Contract/Project_VH.Contract.csproj",
-      "msbuildProject": "../Contract/Project_VH.Contract.csproj"
+      "path": "../Project_VH.Contract/Project_VH.Contract.csproj",
+      "msbuildProject": "../Project_VH.Contract/Project_VH.Contract.csproj"
     },
     "Project_VH.Dal/1.0.0": {
       "type": "project",
-      "path": "../Dal/Project_VH.Dal.csproj",
-      "msbuildProject": "../Dal/Project_VH.Dal.csproj"
+      "path": "../Project_VH.Dal/Project_VH.Dal.csproj",
+      "msbuildProject": "../Project_VH.Dal/Project_VH.Dal.csproj"
     },
     "Project_VH.Domain/1.0.0": {
       "type": "project",
-      "path": "../Domain/Project_VH.Domain.csproj",
-      "msbuildProject": "../Domain/Project_VH.Domain.csproj"
+      "path": "../Project_VH.Domain/Project_VH.Domain.csproj",
+      "msbuildProject": "../Project_VH.Domain/Project_VH.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2526,11 +2526,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\projects\\asp\\Project_VH\\Contract\\Project_VH.Contract.csproj": {
-              "projectPath": "D:\\projects\\asp\\Project_VH\\Contract\\Project_VH.Contract.csproj"
+            "D:\\projects\\asp\\Project_VH\\Project_VH.Contract\\Project_VH.Contract.csproj": {
+              "projectPath": "D:\\projects\\asp\\Project_VH\\Project_VH.Contract\\Project_VH.Contract.csproj"
             },
-            "D:\\projects\\asp\\Project_VH\\Dal\\Project_VH.Dal.csproj": {
-              "projectPath": "D:\\projects\\asp\\Project_VH\\Dal\\Project_VH.Dal.csproj"
+            "D:\\projects\\asp\\Project_VH\\Project_VH.Dal\\Project_VH.Dal.csproj": {
+              "projectPath": "D:\\projects\\asp\\Project_VH\\Project_VH.Dal\\Project_VH.Dal.csproj"
             }
           }
         }
