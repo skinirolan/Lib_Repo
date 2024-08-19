@@ -60,6 +60,6 @@ public class VideoDBContext : DbContext
     /// <summary>
     /// DBSet с роликами
     /// </summary>
-    public DbSet<Video> Videos { get; set; }
+    public DbSet<Video> Videos => Set<Video>();
 
 }

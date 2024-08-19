@@ -13,8 +13,8 @@ public interface IVideoRepository
     /// </summary>
     /// <param name="id">Уникалый идентификатор</param>
     /// <param name="name">Новое имя ролика</param>
-    /// <param name="description">новая длительность ролика</param>
-    /// <param name="duration">новая длительность ролика</param>
+    /// <param name="description">Новая длительность ролика</param>
+    /// <param name="duration">Новая длительность ролика</param>
     /// <returns>Ничего</returns>
     public Task Add(Video videoEntity);
 
@@ -23,8 +23,8 @@ public interface IVideoRepository
     /// </summary>
     /// <param name="id">Уникалый идентификатор</param>
     /// <param name="name">Новое имя ролика</param>
-    /// <param name="description">новая длительность ролика</param>
-    /// <param name="duration">новая длительность ролика</param>
+    /// <param name="description">Новая длительность ролика</param>
+    /// <param name="duration">Новая длительность ролика</param>
     /// <returns>Ничего</returns>
     public Task Update(Video videoEntity);
 
