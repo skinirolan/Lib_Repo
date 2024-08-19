@@ -1,4 +1,4 @@
-﻿using Project_VH.Dal.DBContext;
+﻿using Project_VH.Dal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Project_VH.Domain.Repositories;
@@ -18,15 +18,15 @@ public class VideoRepository:IVideoRepository
     }
 
     //<inheritdoc/>
-    public List<VideoEntity> GetAll()
+    public List<Video> GetAll()
     {
-        return _dbContext.VideoEntities
+        return _dbContext.Videos
             .AsNoTracking()
             .ToList();
     }
 
     //<inheritdoc/>
-    public async Task Add(VideoEntity videoEntity)
+    public async Task Add(Video videoEntity)
     {
 
         await _dbContext.AddAsync(videoEntity);
@@ -34,9 +34,9 @@ public class VideoRepository:IVideoRepository
     }
 
     //<inheritdoc/>
-    public async Task Update(VideoEntity videoEntity)
+    public async Task Update(Video videoEntity)
     {
-        var video = _dbContext.VideoEntities.FirstOrDefault(x => x.Id == videoEntity.Id);
+        var video = _dbContext.Videos.FirstOrDefault(x => x.Id == videoEntity.Id);
         if (video != null)
         {
             video.Duration = videoEntity.Duration;
@@ -48,14 +48,14 @@ public class VideoRepository:IVideoRepository
     }
 
     //<inheritdoc/>
-    public void Delete(Guid id)
+    public async Task Delete(Guid id)
     {
 
-       var video = _dbContext.VideoEntities.FirstOrDefault(x=>x.Id==id);
+       var video = _dbContext.Videos.FirstOrDefault(x=>x.Id==id);
         if (video!=null)
         {
-            _dbContext.VideoEntities.Remove(video);
-            _dbContext.SaveChanges();
+           _dbContext.Remove(video);
+           await _dbContext.SaveChangesAsync();
         }
         else
         {
@@ -64,9 +64,9 @@ public class VideoRepository:IVideoRepository
     }
 
     //<inheritdoc/>
-    public  VideoEntity GetById(Guid id)
+    public  Video GetById(Guid id)
     {
-         var videoEntity=_dbContext.VideoEntities.FirstOrDefault(x => x.Id == id);
+         var videoEntity=_dbContext.Videos.FirstOrDefault(x => x.Id == id);
         if (videoEntity != null)
         {
             return videoEntity;

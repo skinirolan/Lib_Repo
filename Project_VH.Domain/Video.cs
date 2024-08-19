@@ -5,11 +5,11 @@ namespace Project_VH.Domain.Entities;
 /// <summary>
 /// Сущность для базы данных
 /// </summary>
-public class VideoEntity
+public class Video
 {
-    [Required] public Guid Id { get; set; }
-    [Required] public string Name { get; set; }
+    public Guid Id { get; set; }
+    public string Name { get; set; }
     public string Description { get; set; }
-    [Required] public TimeSpan Duration { get; set; }
+    public TimeSpan Duration { get; set; }
 
 }

@@ -2,7 +2,7 @@ using Carter;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
-using Project_VH.Dal.DBContext;
+using Project_VH.Dal;
 using Project_VH.Dal.Repositories;
 using Project_VH.Domain.Repositories;
 

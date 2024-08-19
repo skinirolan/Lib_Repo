@@ -76,14 +76,14 @@ public class VideoModule : ICarterModule
     /// <summary>
     /// Добавляет видео в бд
     /// </summary>
-    /// <param name="videoinput">входные параметры ролика</param>
+    /// <param name="videoinput">Входные параметры ролика</param>
     /// <returns>ID нового ролика</returns>
     private IResult AddVideoToDB(IVideoRepository videoRepository, VideoInput videoinput)
     {
         try
         {
             var id = Guid.NewGuid();
-            videoRepository.Add(new VideoEntity
+            videoRepository.Add(new Video
             {
                 Id = id,
                 Name = videoinput.Name,
@@ -101,9 +101,9 @@ public class VideoModule : ICarterModule
     }
 
     /// <summary>
-    /// Возвращает втдео из БД по ID
+    /// Возвращает видео из БД по ID
     /// </summary>
-    /// <param name="videoRepository">репозиторий</param>
+    /// <param name="videoRepository">Репозиторий</param>
     /// <param name="id">Уникальный идентификатор</param>
     /// <returns>Ролик с заданным ID</returns>
     private IResult GetVideoFromDB(IVideoRepository videoRepository, Guid id)
@@ -128,7 +128,7 @@ public class VideoModule : ICarterModule
     /// <summary>
     /// Обновляет видеоролик с выбранным ID 
     /// </summary>
-    /// <param name="videoRepository">репозиторий</param>
+    /// <param name="videoRepository">Репозиторий</param>
     /// <param name="id">Уникальынй идентификатор</param>
     /// <param name="videoinput">Новые данные ролика</param>
     /// <returns>Код выполнения</returns>
@@ -136,7 +136,7 @@ public class VideoModule : ICarterModule
     {
         try
         {
-            videoRepository.Update(new VideoEntity
+            videoRepository.Update(new Video
             {
                 Id = id,
                 Name = videoinput.Name,
@@ -159,7 +159,7 @@ public class VideoModule : ICarterModule
     /// <summary>
     /// Возвращает список всех видеороликов
     /// </summary>
-    /// <param name="videoRepository">репозиторий</param>
+    /// <param name="videoRepository">Репозиторий</param>
     /// <returns>List со всеми видеороликами</returns>
     private IResult GetAllFromDB(IVideoRepository videoRepository)
     {
@@ -178,7 +178,7 @@ public class VideoModule : ICarterModule
     /// <summary>
     /// Удаляет видео из БД
     /// </summary>
-    /// <param name="videoRepository">репозиторий</param>
+    /// <param name="videoRepository">Репозиторий</param>
     /// <param name="id">Уникальный идентификатор</param>
     /// <returns>Код выполнения</returns>
     private IResult DeleteVideoFromDB(IVideoRepository videoRepository, Guid id)

@@ -16,7 +16,7 @@ public interface IVideoRepository
     /// <param name="description">новая длительность ролика</param>
     /// <param name="duration">новая длительность ролика</param>
     /// <returns>Ничего</returns>
-    public Task Add(VideoEntity videoEntity);
+    public Task Add(Video videoEntity);
 
     /// <summary>
     /// Обновляет все данные о ролике
@@ -26,25 +26,25 @@ public interface IVideoRepository
     /// <param name="description">новая длительность ролика</param>
     /// <param name="duration">новая длительность ролика</param>
     /// <returns>Ничего</returns>
-    public Task Update(VideoEntity videoEntity);
+    public Task Update(Video videoEntity);
 
     /// <summary>
     /// Удаление ролика из бд
     /// </summary>
     /// <param name="id"></param>
     /// <returns>Ничего</returns>
-    public void Delete(Guid id);
+    public Task Delete(Guid id);
 
     /// <summary>
     /// Получение всех роликов из бд
     /// </summary>
     /// <returns>Список роликов</returns>
-    public List<VideoEntity> GetAll();
+    public List<Video> GetAll();
 
     /// <summary>
     /// Получение ролика из бд по id
     /// </summary>
     /// <param name="id">Уникалый идентификатор</param>
     /// <returns>Ролик</returns>
-    public VideoEntity GetById(Guid id);
+    public Video GetById(Guid id);
 }
