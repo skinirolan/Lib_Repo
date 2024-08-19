@@ -21,6 +21,7 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.AddDbContext<VideoDBContext>();
 
+
 builder.Services.AddScoped<IVideoRepository, VideoRepository>();
 
 var app = builder.Build();

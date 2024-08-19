@@ -95,6 +95,7 @@ public class VideoModule : ICarterModule
         }
         catch (Exception)
         {
+           
             return TypedResults.Json("Произошла неизвестная ошибка",
                 statusCode: StatusCodes.Status500InternalServerError);
         }       

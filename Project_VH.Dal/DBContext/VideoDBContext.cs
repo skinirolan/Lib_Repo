@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Project_VH.Domain.Entities;
 
@@ -11,16 +12,16 @@ namespace Project_VH.Dal;
 public class VideoDBContext : DbContext
 {
     /// <summary>
-    /// Строка, содержащая информаицию о подключении к бд
+    /// Конфигурация
     /// </summary>
-    private string _connectionString;
+    private readonly IConfiguration _configuration;
 
     /// <summary>
     /// Конструктор контекста
     /// </summary>
-    public VideoDBContext() : base()
+    public VideoDBContext(IConfiguration configuration)
     {
-        _connectionString = "Host=localhost;Port=5432;Database=VideoDB;Username=postgres;Password=admin";
+        _configuration = configuration;
         Database.EnsureCreated();
     }
 
@@ -30,15 +31,18 @@ public class VideoDBContext : DbContext
     /// <param name="optionsBuilder"><see cref="DbContextOptionsBuilder"/></param>
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql(_connectionString);
+        var connectionString = _configuration.GetConnectionString("DefaultConnection");
+        Console.WriteLine("Строка такая: "+connectionString);
+        optionsBuilder.UseNpgsql(connectionString);
     }
-
+    
     /// <summary>
     /// Конфигурация модели видео
     /// </summary>
     /// <param name="modelBuilder"><see cref="ModelBuilder"></param>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+
 
         modelBuilder.Entity<Video>().HasKey(v => v.Id);
 
