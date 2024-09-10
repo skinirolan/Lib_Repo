@@ -166,7 +166,7 @@ public class VideoModule : ICarterModule
     {
         try
         {
-            var videoList=await videoRepository.GetAll();
+            var videoList = await videoRepository.GetAll();
             return TypedResults.Ok(videoList);
         }
         catch (Exception)
