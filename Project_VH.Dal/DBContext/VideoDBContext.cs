@@ -41,7 +41,6 @@ public class VideoDBContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
 
-
         modelBuilder.Entity<Video>().HasKey(v => v.Id);
 
         modelBuilder.Entity<Video>()

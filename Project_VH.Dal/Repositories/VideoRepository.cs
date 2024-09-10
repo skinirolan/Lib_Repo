@@ -28,7 +28,6 @@ public class VideoRepository:IVideoRepository
     //<inheritdoc/>
     public async Task Add(Video videoEntity)
     {
-
         await _dbContext.AddAsync(videoEntity);
         await _dbContext.SaveChangesAsync();
     }
@@ -44,13 +43,12 @@ public class VideoRepository:IVideoRepository
             video.Description = videoEntity.Description;
             await _dbContext.SaveChangesAsync();
         }
-        else throw new NullReferenceException("Обьект не найден");
+        else throw new NullReferenceException("Объект не найден");
     }
 
     //<inheritdoc/>
     public async Task Delete(Guid id)
     {
-
        var video = _dbContext.Videos.FirstOrDefault(x=>x.Id==id);
         if (video!=null)
         {
@@ -59,7 +57,7 @@ public class VideoRepository:IVideoRepository
         }
         else
         {
-            throw new NullReferenceException("Обьекта не найден");
+            throw new NullReferenceException("Объект не найден");
         }
     }
 
@@ -73,10 +71,7 @@ public class VideoRepository:IVideoRepository
         }
         else
         {
-            throw new NullReferenceException("Обьект не найден");
+            throw new NullReferenceException("Объект не найден");
         }
     }
-
-    
-
 }

@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAuthorization();
 builder.Services.AddCarter();
+
 builder.Services.AddSwaggerGen(options =>
 {
     options.MapType<TimeSpan>(() => new OpenApiSchema
@@ -20,11 +21,10 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 builder.Services.AddDbContext<VideoDBContext>();
-
-
 builder.Services.AddScoped<IVideoRepository, VideoRepository>();
 
 var app = builder.Build();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -36,7 +36,5 @@ app.MapGroup("v1/api")
     .MapCarter();
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.Run();

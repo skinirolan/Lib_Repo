@@ -8,4 +8,3 @@
 /// <param name="Description">Описание</param>
 /// <param name="Duration">Длительность</param>
 public record VideoOutput (Guid Id, string Name, string Description, TimeSpan Duration);
-
