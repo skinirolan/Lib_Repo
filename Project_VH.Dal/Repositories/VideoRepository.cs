@@ -18,11 +18,11 @@ public class VideoRepository:IVideoRepository
     }
 
     //<inheritdoc/>
-    public List<Video> GetAll()
+    public async Task<List<Video>> GetAll()
     {
-        return _dbContext.Videos
+        return await _dbContext.Videos
             .AsNoTracking()
-            .ToList();
+            .ToListAsync();
     }
 
     //<inheritdoc/>
@@ -64,9 +64,9 @@ public class VideoRepository:IVideoRepository
     }
 
     //<inheritdoc/>
-    public  Video GetById(Guid id)
+    public  async Task<Video> GetById(Guid id)
     {
-         var videoEntity=_dbContext.Videos.FirstOrDefault(x => x.Id == id);
+         var videoEntity=await _dbContext.Videos.FirstOrDefaultAsync(x => x.Id == id);
         if (videoEntity != null)
         {
             return videoEntity;

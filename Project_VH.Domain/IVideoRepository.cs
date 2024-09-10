@@ -39,12 +39,12 @@ public interface IVideoRepository
     /// Получение всех роликов из бд
     /// </summary>
     /// <returns>Список роликов</returns>
-    public List<Video> GetAll();
+    public Task<List<Video>> GetAll();
 
     /// <summary>
     /// Получение ролика из бд по id
     /// </summary>
     /// <param name="id">Уникалый идентификатор</param>
     /// <returns>Ролик</returns>
-    public Video GetById(Guid id);
+    public Task<Video> GetById(Guid id);
 }

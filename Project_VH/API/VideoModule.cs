@@ -78,12 +78,12 @@ public class VideoModule : ICarterModule
     /// </summary>
     /// <param name="videoinput">Входные параметры ролика</param>
     /// <returns>ID нового ролика</returns>
-    private IResult AddVideoToDB(IVideoRepository videoRepository, VideoInput videoinput)
+    private async Task<IResult> AddVideoToDB(IVideoRepository videoRepository, VideoInput videoinput)
     {
         try
         {
             var id = Guid.NewGuid();
-            videoRepository.Add(new Video
+            await videoRepository.Add(new Video
             {
                 Id = id,
                 Name = videoinput.Name,
@@ -107,11 +107,11 @@ public class VideoModule : ICarterModule
     /// <param name="videoRepository">Репозиторий</param>
     /// <param name="id">Уникальный идентификатор</param>
     /// <returns>Ролик с заданным ID</returns>
-    private IResult GetVideoFromDB(IVideoRepository videoRepository, Guid id)
+    private async Task<IResult> GetVideoFromDB(IVideoRepository videoRepository, Guid id)
     {
         try
         {
-            var repVideo = videoRepository.GetById(id);
+            var repVideo = await videoRepository.GetById(id);
             var videoOutput = new VideoOutput(repVideo.Id,repVideo.Name,repVideo.Description, repVideo.Duration);
             return TypedResults.Ok(videoOutput);
         }
@@ -133,11 +133,11 @@ public class VideoModule : ICarterModule
     /// <param name="id">Уникальынй идентификатор</param>
     /// <param name="videoinput">Новые данные ролика</param>
     /// <returns>Код выполнения</returns>
-    private IResult UpdateVideoAtDB(IVideoRepository videoRepository, Guid id, VideoInput videoinput)
+    private async Task<IResult> UpdateVideoAtDB(IVideoRepository videoRepository, Guid id, VideoInput videoinput)
     {
         try
         {
-            videoRepository.Update(new Video
+            await videoRepository.Update(new Video
             {
                 Id = id,
                 Name = videoinput.Name,
@@ -162,11 +162,11 @@ public class VideoModule : ICarterModule
     /// </summary>
     /// <param name="videoRepository">Репозиторий</param>
     /// <returns>List со всеми видеороликами</returns>
-    private IResult GetAllFromDB(IVideoRepository videoRepository)
+    private async Task<IResult> GetAllFromDB(IVideoRepository videoRepository)
     {
         try
         {
-            var videoList=videoRepository.GetAll();
+            var videoList=await videoRepository.GetAll();
             return TypedResults.Ok(videoList);
         }
         catch (Exception)
@@ -182,11 +182,11 @@ public class VideoModule : ICarterModule
     /// <param name="videoRepository">Репозиторий</param>
     /// <param name="id">Уникальный идентификатор</param>
     /// <returns>Код выполнения</returns>
-    private IResult DeleteVideoFromDB(IVideoRepository videoRepository, Guid id)
+    private async Task<IResult> DeleteVideoFromDB(IVideoRepository videoRepository, Guid id)
     {
         try
         {
-            videoRepository.Delete(id);
+            await videoRepository.Delete(id);
             return TypedResults.Ok();
         }
         catch (NullReferenceException)

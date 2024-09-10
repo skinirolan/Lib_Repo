@@ -31,9 +31,7 @@ public class VideoDBContext : DbContext
     /// <param name="optionsBuilder"><see cref="DbContextOptionsBuilder"/></param>
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        var connectionString = _configuration.GetConnectionString("DefaultConnection");
-        Console.WriteLine("Строка такая: "+connectionString);
-        optionsBuilder.UseNpgsql(connectionString);
+        optionsBuilder.UseNpgsql(_configuration.GetConnectionString("DefaultConnection"));
     }
     
     /// <summary>
